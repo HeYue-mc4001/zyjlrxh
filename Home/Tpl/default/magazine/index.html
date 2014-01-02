@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>杂志频道——职业经理人协会</title>
+</head>
+
+<load href="__PUBLIC__/images/style_t.css" />
+<load href="__PUBLIC__/images/css.css" />
+<load href="__PUBLIC__/js/ScrollPic.js" />
+<script src="__PUBLIC__/js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/script.js"></script>
+
+<include file="public:header" />
+<div id="main" class="p_t5">
+	<div id="container">
+<div id="wrap-container" class="clearfix">
+        <volist name="catelist" id="cate">
+        <div class="examples_body">
+        <h2><a href="__URL__/column?pcid={$cate['cid']}">{$cate['cname']}</a></h2>
+	    <ul class="bannerHolder">
+            <volist name="cate['list']" id="art">
+            <li>
+            <div class="banner">
+                <a href="__URL__/pageflash?aid={$art['aid']}" target="_blank">
+                    <img height="150" width="210" title="{$art['istrue']}" src="__ROOT__/{$art['pic']}" />
+                </a>
+                <p class="companyInfo"><font style="font-size:18px;">{$art['title']}</font><br /><br />{$art['description']|msubstr=0,50}<br /><br /><font style="color:#f00;">{$art['istrue']}</font></p>
+                <div class="cornerTL"></div>
+                <div class="cornerTR"></div>
+                <div class="cornerBL"></div>
+                <div class="cornerBR"></div>
+            </div>
+            </li>
+            </volist>
+        </ul>
+        <!-- Examples body -->
+        </div>
+        </volist>
+</div>
+<!-- /COPYRIGHT -->
+</div>
+</div>
+<include file="public:footer" />
+</body>
+</html>

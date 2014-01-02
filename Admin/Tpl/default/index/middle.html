@@ -1,0 +1,43 @@
+<html><head>
+<meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+<title></title>
+<style type="text/css">
+<!--
+body {
+	margin-left: 0px;
+	margin-top: 0px;
+	background-image: url('images/jianbian_vline.jpg');
+}
+.jd { FONT-SIZE: 9pt; CURSOR: pointer; COLOR: #0074c7; FONT-FAMILY: Webdings }
+-->
+</style>
+</head>
+
+<body>
+<table width="100" cellspacing="0" cellpadding="0" border="0" height="100%" onClick="slide_is_show();" class="jd">
+  <tbody>
+  <tr>
+    <td class="jd">
+      <div id="bar"><img id="arrow" src="images/l_arrow.jpg" width="10"/></div></td></tr></tbody></table>
+<script type="text/javascript" language="JavaScript">
+var left_weight = parent.document.getElementById("menu_main").cols;
+var showslide=false;
+	function slide_is_show(){  
+       if(!showslide){  
+            slideout();  
+        } else {  
+            slidein();  //onmouseover="return slideout();"
+        }  
+    }  
+	function slidein(){
+		document.getElementById("arrow").src = "images/l_arrow.jpg";
+		parent.document.getElementById("menu_main").cols = left_weight;
+		showslide=false;
+	}	
+	function slideout(){ //alert('ok');
+		document.getElementById("arrow").src = "images/r_arrow.jpg";
+		parent.document.getElementById("menu_main").cols = '0,10,*';
+		showslide=true;
+	}
+</script>
+</body></html>

@@ -1,0 +1,71 @@
+<script type="text/javascript">
+function init(mod){
+	mod = mod.toLowerCase();
+	var checked = new Array()
+	checked["index"] = 1;
+	<volist name="categorylist" id="cate">
+	checked["{$cate.module}"] = {$i+1};
+	</volist>
+
+	if(mod){
+		toggle_nav(checked[mod]);
+	}else{
+		toggle_nav(1);
+	}
+}
+</script>
+<script type="text/javascript">
+function fetch_object(idname){
+	var my_obj = document.getElementById(idname);
+	return my_obj;
+}
+
+function toggle_nav(obj){
+	for (i = 1; i<=9; i++ ){
+		var sub_nav = fetch_object("zzjs_nav" + i);
+		var list_nav = fetch_object("list_" + i);
+		if (obj == i){
+			sub_nav.style.display = "block";
+			list_nav.style.backgroundImage = "url(__PUBLIC__/images/nav_ch.png)";
+		}else if(i == 1){
+			sub_nav.style.display = "none";
+			list_nav.style.backgroundImage = "url(__PUBLIC__/images/nav_l.png)";
+		}else if(i == 9){
+			sub_nav.style.display = "none";
+			list_nav.style.backgroundImage = "url(__PUBLIC__/images/nav_r.png)";
+		}else{
+			sub_nav.style.display = "none";
+			list_nav.style.backgroundImage = "url(__PUBLIC__/images/nav_m.png)";
+		}
+	}
+}
+</script>
+<body onLoad="init('{$Think.MODULE_NAME}')">
+<div id="header">
+	<div id="logo"><img src="__PUBLIC__/images/zyjlr_logo.png" /></div>
+    <div id="login"><include file="public:top_login" /></div>
+    <div id="search"><include file="public:top_search" /></div>
+    <div id="navigation">
+        <div id="nav_box">
+			<li id="list_1" onMouseOver="javascript:toggle_nav(1)" style="background:url(__PUBLIC__/images/nav_l.png);"><a href="__ROOT__/index.php">首页</a></li>
+            <volist name="categorylist" id="cate">
+            	<li id="list_{$i+1}" onMouseOver="javascript:toggle_nav({$i+1})"><a href="__APP__/{$cate.module}">{$cate.cname}</a></li>
+            </volist>
+                
+            <li id="list_9" onMouseOver="javascript:toggle_nav(9)" style="background:url(__PUBLIC__/images/nav_r.png);"><a href="__ROOT__/member.php">会员中心</a></li>
+		</div>
+	</div>
+    <div id="zzjs_nav1" class="headt" style="display:block">
+                欢迎来到职业经理人协会网站……
+    </div>
+    <volist name="categorylist" id="cate" key="j">
+    	<div id="zzjs_nav{$j+1}" class="headt" style="display:none">
+        	<volist name="cate['subcate']" id="sub">
+                <a href="__APP__/{$cate.module}/column?pcid={$sub.cid}">{$sub.cname}</a> |
+            </volist>
+		</div>
+    </volist>
+    <div id="zzjs_nav9" class="headt" style="display:none">
+		<a href="__ROOT__/member.php/index/contacts">人脉</a> | <a href="__ROOT__/member.php/index/group">圈子</a> | <a href="__ROOT__/member.php/index/mblog">微博</a> | <a href="__ROOT__/member.php/index/message">消息</a> | <a href="__ROOT__/member.php/index/webim">聊天室</a> | <a href="__ROOT__/member.php/index/setcenter">个人设置</a>
+    </div>
+</div>

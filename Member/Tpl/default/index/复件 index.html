@@ -1,0 +1,25 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员中心</title>
+</head>
+
+<body>
+<h1>会员中心首页</h1>&nbsp;
+<a href="__APP__/index/editmemberdata" >修改个人信息</a>&nbsp;
+<a href="__APP__/login/loginout" >退出</a>
+<div>
+<ul>
+<li>姓名：{$member.realname}</li>
+<li>昵称：{$member.loginname}</li>
+<li>性别：{$member.gender}</li>
+<li>注册日期：{$member.regdate|date="Y-m-d",###}</li>
+<li>上次登录时间：{$_SESSION['member']['lastlogin']|date="Y-m-d H:i",###}</li>
+<li>上次登录IP：{$_SESSION['member']['lastip']}</li>
+<li>Email：{$member.email}</li>
+<li>电话：{$member.phone}</li>
+</ul>
+</div>
+</body>
+</html>

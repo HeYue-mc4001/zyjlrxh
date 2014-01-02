@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>会员积分管理</title>
+
+<link type="text/css" rel="stylesheet" href="__PUBLIC__/calendar/calendar.css" >
+<script type="text/javascript" src="__PUBLIC__/calendar/calendar.js" ></script>  
+<script type="text/javascript" src="__PUBLIC__/calendar/calendar-zh.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/calendar/calendar-setup.js"></script>
+<style type="text/css">
+body{
+padding:0px;
+}
+.titlebt {
+	font-size: 12px;
+	line-height: 26px;
+	font-weight: bold;
+	color: #000000;
+	background-image: url(__PUBLIC__/admin/images/top_bt.jpg);
+	background-repeat: no-repeat;
+	display: block;
+	text-indent: 15px;
+	padding-top: 5px;
+}
+.table_list
+{
+	border:#000 1px solid;
+}
+
+.table_list th
+{
+ border:#000 1px solid;
+ border-top:none;
+border-left:none;
+}
+.table_list td
+{
+border:#000 1px dotted;
+border-top:none;
+border-left:none;
+}
+a
+{
+color:blue;
+text-decoration:none;
+}
+tr .relow
+{
+color:#03C;
+}
+tr .relow a
+{
+color:#03C;
+}
+tr .relow a:hover
+{
+color:red;
+}
+</style>
+<script type="text/javascript">
+<!--
+function doAction(a,id){
+	if(a=='deleteAll'){
+		if(confirm('请确认是否删除所选！')){
+			ids=getCheckedIds('checkbox');
+			window.location.href="__APP__/Points/delete/ids/"+ids;
+		}
+	}
+	if(a=='delete'){
+		if(confirm('请确认是否删除！')){
+			window.location.href="__APP__/Points/delete/id/"+id;
+		}
+	}
+	if(a=='checked'){
+		if(confirm('请确认是否批量审核所选！')){
+			ids=getCheckedIds('checkbox');
+			window.location.href="__APP__/Points/audit/ids/"+ids;
+		}
+	}
+}
+
+
+//全选/取消
+function checkAll(o,checkBoxName){
+	var oc = document.getElementsByName(checkBoxName);
+	for(var i=0; i<oc.length; i++) {
+		if(o.checked){
+			oc[i].checked=true;	
+		}else{
+			oc[i].checked=false;	
+		}
+	}
+	checkDeleteStatus(checkBoxName)
+}
+
+//检查有选择的项，如果有删除按钮可操作
+function checkDeleteStatus(checkBoxName){
+	var oc = document.getElementsByName(checkBoxName);
+	for(var i=0; i<oc.length; i++) {
+		if(oc[i].checked){
+			document.getElementById('DeleteCheckboxButton1').disabled=false;
+			document.getElementById('DeleteCheckboxButton2').disabled=false;
+			return;
+		}
+	}
+	document.getElementById('DeleteCheckboxButton1').disabled=true;
+	document.getElementById('DeleteCheckboxButton2').disabled=true;
+}
+
+//获取所有被选中项的ID组成字符串
+function getCheckedIds(checkBoxName){
+	var oc = document.getElementsByName(checkBoxName);
+	var CheckedIds = "";
+	for(var i=0; i<oc.length; i++) {
+		if(oc[i].checked){
+			if(CheckedIds==''){
+				CheckedIds = oc[i].value;	
+			}else{
+				CheckedIds +=","+oc[i].value;	
+			}
+			
+		}
+	}
+	return CheckedIds;
+}
+-->
+</script>
+</head>
+
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="word-break:break-all;word-wrap:break-word;table-layout: auto;">
+  <tr>
+    <td width="17" height="29" valign="top" background="__PUBLIC__/admin/images/mail_leftbg.gif">
+    <img src="__PUBLIC__/admin/images/left-top-right.gif" width="17" height="29" /></td>
+    <td width="" height="29" valign="top" background="__PUBLIC__/admin/images/content-bg.gif">
+    <table width="100%" height="29" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+      <tr>
+        <td height="29"><div class="titlebt">积分管理</div></td>
+      </tr>
+    </table></td>
+    <td width="16" valign="top" background="__PUBLIC__/admin/images/mail_rightbg.gif"><img src="__PUBLIC__/admin/images/nav-right-bg.gif" width="16" height="29" /></td>
+  </tr>
+  <tr>
+    <td height="71" valign="middle" background="__PUBLIC__/admin/images/mail_leftbg.gif">&nbsp;</td>
+    <td valign="top" bgcolor="#F7F8F9">
+    
+  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" >
+  <tr>
+  	<td width="160" height="40" align="center" valign="middle"><button onClick="location.href='__APP__/Member/add'">EXCEL导入会员积分</button></td>
+    <td >&nbsp;</td>
+    <td width="60" valign="middle">关键字:</td>
+    <form method="post" action="__APP__/Points/index">
+    <td width="220" valign="middle">
+    <input type="text" name='key' value="" style="width:200px" />
+    </td>
+    <td width="30" valign="middle">起:</td>
+    <td width="80" valign="middle">
+    <input type="text" name='start' id="EntTime1" onclick="return showCalendar('EntTime1','y-mm-dd');"  value="" style="width:70px" />
+    </td>
+    <td width="30" valign="middle">止:</td>
+    <td width="80" valign="middle">
+    <input type="text" name='end' id="EntTime2" onclick="return showCalendar('EntTime2','y-mm-dd');"  value="" style="width:70px" />
+    </td>
+    <td width="60" valign="middle">用户组:</td>
+    <td width="80" valign="middle">
+    <select name="gid">
+    	<option value="0" >--全部--</option>
+        <volist name="grouplist" id="gro">
+        <option value="{$gro.id}" {$gro.selected}>{$gro.name}</option>
+        </volist>
+    </select>
+    </td>
+    <td width="80" valign="middle">审核状态:</td>
+    <td width="80" valign="middle">
+    <select name="is_checked">
+    	<option value="0" >--全部--</option>
+        <option value="1" >未审核</option>
+        <option value="2" >已审核</option>
+    </select>
+    </td>
+    <td width="50" valign="middle">
+    <input type="submit" value="搜索" />
+    </td>
+    </form>
+  </tr>
+</table>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="table_list" style="word-break:break-all;word-wrap:break-word;table-layout:fixed;">
+  <tr>
+    <th width="40" align="center" valign="middle"><input type="checkbox" name="checkbox11" value="checkbox" onClick="checkAll(this,'checkbox')"></th>
+    <th width="50" align="center" valign="middle">ID</th>
+    <th width="200" height="35" align="center" valign="middle">昵称</th>
+    <th width="150" align="center" valign="middle">真实姓名</th>
+    <th width="100" align="center" valign="middle">现有积分</th>
+    <th width="" align="center" valign="middle">上次积分变更</th>
+    <th width="150" align="center" valign="middle">积分变更记录</th>
+   <!-- <th width="80" height="35" align="center" valign="middle">操作</th>-->
+  </tr>
+<volist name="memberlist" id="vo">
+  <tr onMouseOver="this.className='relow'" onMouseOut="this.className='row'" class="row">
+    <td align="center" valign="middle" ><input type="checkbox" name="checkbox" value="{$vo['id']}" onClick="checkDeleteStatus('checkbox')"></td>
+    <td align="center" valign="middle" >{$vo['id']}</td>
+    <td height="35" align="center" valign="middle" >{$vo['nickname']}&nbsp;</td>
+    <td height="35" align="center" valign="middle" >{$vo['realname']}&nbsp;</td>
+    <td height="35" align="center" valign="middle" >{$vo['point']}&nbsp;</td>
+    <td align="center" valign="middle">{$vo['lastchange']}</td>
+    <td height="35" align="center" valign="middle" ><a href="__APP__/Pointsrecord/index/mid/{$vo['id']}" >详细记录&nbsp;</a></td>
+    <!--<td height="35" align="center" valign="middle">
+    <a href="__APP__/Member/detail/id/{$vo['id']}" style="border:none;"><img src="__PUBLIC__/admin/images/ico_edit.gif" width="12" height="12" alt="详细" title="详细" style="border:none;" /></a> | <img src="__PUBLIC__/admin/images/ico_del.gif" width="12" height="12" alt="删除" title="删除" onClick="doAction('delete',{$vo['id']})" style="cursor:pointer"></td>-->
+  </tr>
+</volist>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" >
+  <tr>
+    <td height="35" style="text-align:left; padding-left:10px" width="100px">
+     <!--<div style=" float:left"><input type="button" id="DeleteCheckboxButton1" value="删 除" disabled="disabled" onClick="doAction('deleteAll')"></div>
+     <div style=" float:left"><input type="button" id="DeleteCheckboxButton2" value="审 核" disabled="disabled" onClick="doAction('checked')"></div>-->
+    </td><td style="text-align:center; ">
+   
+			<div>{$page}</div>
+		</td>
+  </tr>
+  <tr>
+    <td height="3" colspan="2"></td>
+  </tr>
+</table>  
+</td>
+    <td background="__PUBLIC__/admin/images/mail_rightbg.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="middle" background="__PUBLIC__/admin/images/mail_leftbg.gif"><img src="__PUBLIC__/admin/images/buttom_left2.gif" width="17" height="17" /></td>
+      <td height="17" valign="top" background="__PUBLIC__/admin/images/buttom_bgs.gif"><img src="__PUBLIC__/admin/images/buttom_bgs.gif" width="17" height="17" /></td>
+    <td background="__PUBLIC__/admin/images/mail_rightbg.gif"><img src="__PUBLIC__/admin/images/buttom_right2.gif" width="16" height="17" /></td>
+  </tr>
+</table>
+</body>
+
+</html>

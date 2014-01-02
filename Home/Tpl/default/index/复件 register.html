@@ -1,0 +1,86 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<title>报名页面</title>
+<style type="text/css">
+body{width:1260px;height:auto;margin:0 auto;background-color:#fff;}
+.info-t span{ color:#2c65b0; margin-right:30px;}
+.info-t table{ border-top:solid 1px #999999; border-right:solid 1px #999999; text-align:center;}
+.info-t table td{ border-bottom:solid 1px #999999; border-left:solid 1px #999999; height:50px; line-height:50px; font-size:18px;}
+.info-t table td select{ border:none; border: solid 1px #FFFFFF;border-bottom:solid 1px #999999;}
+.info-t table td span{ font-size:16px;}
+.input{vertical-align:middle; width:80%; border:0; border-bottom:solid 1px #999999; font-size:16px; text-align:center;}
+</style>
+</head>
+<script type="text/javascript">
+function ischecked(){
+	var oc = document.getElementById('protocl');
+	if(oc.checked){
+		document.getElementById('confirm').disabled=false;
+	}else{
+		alert("如果不接受协议，将影响您的报名！");
+		document.getElementById('confirm').disabled=true;
+	}
+	
+}
+</script>
+<body>
+    <div class="header"><img src="__PUBLIC__/images/header.jpg" /></div>
+    <!--头部-->
+
+    <div class="info-right">
+
+        <div class="info-t">
+	
+<div id="h3" style="text-align:center;"><h3>中国电信面视通申请(<font style="color:#f00;">*为必填项</font>)</h3></div>
+<form action="__URL__/addregister" method="post" >
+<table width="722" border="0" cellpadding="0" cellspacing="0" align="center">
+  <tr>
+    <td colspan="5" align="left">&nbsp;企业名称：<input type="text" border="0" class="input" id="company" name="company" style="width:80%; text-align:left;"><font style="color:#f00;">*</font></td>
+    </tr>
+  
+  </table>
+  <table width="722" border="0" cellpadding="0" cellspacing="0" align="center" style="margin-top:-1px;">
+  <tr>
+    <td colspan="2"  align="left" style="width:30%">&nbsp;固定电话：<input type="text" border="0" class="input" id="phone" name="phone" style="width:30%; text-align:left"> <span style="font-size:12px;"><font style="color:#f00;">*</font>&nbsp;注：此固定电话为面视通账号，号码前请加区号如：057188888888</span></td>
+    </tr>
+	<tr>
+    <td  align="left" style="width:30%">&nbsp;联系人：<input type="text" border="0" class="input" id="linkman" name="linkman" style="width:50%; text-align:left"></td>
+    <td  align="left" style="width:70%">&nbsp;联系电话：<input type="text" border="0" class="input" id="linkphone" name="linkphone" style="width:25%; text-align:left">&nbsp;手机号码：<input type="text" border="0" class="input" id="linkcell" name="linkcell" style="width:25%; text-align:left"></td>
+    </tr>
+</table>
+<table width="720" border="0" cellpadding="0" cellspacing="0" align="center" style="margin-top:-1px;">
+  <tr>
+    <td width="20%" valign="top">补充说明：</td>
+	<td align="left" width="80%">&nbsp;<textarea id="poatscript" name="poatscript" cols="50" rows="5" style="margin-top:10px;"></textarea></td>
+    </tr>
+	<tr>
+   	<td colspan="2" align="center">
+	<h4 style="margin:0px auto; color:#2c65b0;">中国电信面视通通信服务协议</h4>
+	<p align="center" style="text-align:left; font-size:12px; line-height:20px; width:650px; margin:0px auto;">	本《协议》是用户与杭州和悦网络科技之间关于面视通用户注册、使用、管理所订立的协议。您的使用行为将视为对本《协议》的接受，并同意接受本《协议》各项条款的约束。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;面视通是杭州和悦网络科技有限公司和中国电信推出的一款集通信录管理、电话拨打、短信群发、电话会议、视频会议、一站式招聘服务等多种功能于一体的国内领先的融合型通信产品，您在办公室就可以完成发布岗位、查看简历、通知面试、视频面试等招聘全过程，有效提高协同工作效率。
+资费标准：<br>
+&nbsp;&nbsp;&nbsp;&nbsp;1、本软件开通免收功能费；<br>
+&nbsp;&nbsp;&nbsp;&nbsp;2、通过本软件拨打电话、电话会议、短信、视频会议等所产生的通信费用按电信现行资费标准进行收取，由中国电信运营商收取，并在电信账单中体现。详情请拨打电话0571-89988152咨询。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;相关免责条款：<br>
+&nbsp;&nbsp;&nbsp;&nbsp;1、使用本软件涉及到互联网服务，可能会受到各个环节的不稳定因素影响，存在因不可抗力、计算机病毒、黑客攻击、系统不稳定、用户所在位置、用户关机，非法内容信息、骚扰信息屏蔽以及其他任何网络、技术、通信线路、信息安全管理措施等原因造成的服务中断、受阻等不能满足用户要求的风险，用户须明白并自行承担以上风险，本单位不承担任何无可抗拒风险责任。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;2、用户通过本软件与其他用户交往，因受误导或欺骗而导致或可能导致的任何心理、生理上的伤害以及经济上的损失，由过错方依法承担所有责任，一概与作本单位无关。<br>
+&nbsp;&nbsp;&nbsp;&nbsp;本服务协议将对您使用面视通的行为产生法律约束力。
+
+<p style="font-size:12px; text-align:center; line-height:20px; color:#2c65b0;"><b style="color:#FF0000; font-size:14px;">在浙融会报名期间成为面视通用户的用户享受免通信功能费的优惠！</b><br>同意此协议并加入成为面视通用户<input type="checkbox" checked="checked" id="protocl" onclick="ischecked()" style="vertical-align:middle; margin-top:-2px;"></p>
+</p>
+	<p style="width:720px; height:60px; background:#f3f8fe; margin-bottom:0px;"><input type="submit" id="confirm" value="提交申请"  style="width:75px; height:25px; font-size:14px;"> </p></td>
+    </tr>
+</table>
+</form>
+
+
+		</div>
+	</div>
+	
+    <div style="clear:both"></div>
+    <div class="foot">
+        
+
+    </div>
+</body>
+</html>

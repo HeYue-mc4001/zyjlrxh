@@ -1,0 +1,49 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>视频列表页__职业经理人协会</title>
+</head>
+<load href="__PUBLIC__/images/style.css" />
+<load href="__PUBLIC__/images/css.css" />
+<include file="public:header" />
+<div id="main" class="p_t5">
+    	<div id="ad_1" class="m_t5 p_l5" style="height:22px;background:url(__PUBLIC__/images/path_bg.gif) repeat-x bottom;">
+            	你的位置：首页&gt;&gt;视频列表
+    	</div>
+        <volist name="catelist" id="cate">
+        <div class="list_ f_l m_t5 bd" style="width:100%;">
+        	<div class="f_l p" style="width:100%;">
+            	<div>{$cate['cname']}</div>
+                <volist name="cate['video']" id="video">
+				<div class="art_tit f_l m_l5 b_b" style="width:100%;padding-left:80px;"><img src="__PUBLIC__/images/art_icon.png" /><a href="__ROOT__/index.php/index/video?id={$video.id}" target="_blank">{$video.title}</a></div>
+                </volist>
+            <volist name="cate['sub']" id="sub">
+            	<div style="width:100%;padding-left:30px;margin-top:8px;float:left;">&gt;&gt;{$sub['cname']}</div>
+                <volist name="sub['video']" id="vid">
+                <div class="art_tit f_l m_l5 b_b" style="width:100%;padding-left:80px;"><img src="__PUBLIC__/images/art_icon.png" /><a href="__ROOT__/index.php/index/video?id={$vid.id}" target="_blank">{$vid.title}</a></div>
+                </volist>
+            </volist>
+            </div>
+		</div>
+        </volist>
+        <div class="list_ f_l m_b8">&nbsp;</div>
+</div>
+<div id="footer" class="">
+	<div class="f_l p_t5 b_t w100">
+    <table >
+    	<tr>
+    		<td width="300" rowspan="3" align="right"><img src="__PUBLIC__/images/foot_logo.png" /></td>
+            <td><span>版权所有：杭州市工商行政管理局  网站备案号：浙ICP备12028657号 </span></td>
+    	</tr>
+    	<tr>
+            <td><span>联系地址：杭州市江干区凤起东路109号  邮编：310016 </span></td>
+    	</tr>
+    	<tr>
+            <td><span>技术支持：杭州瑞合信网络科技有限公司  0571-82760000</span></td>
+    	</tr>
+    </table>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>圈子——会员中心</title>
+</head>
+<load href="__PUBLIC__/member/images/style.css" />
+<load href="__PUBLIC__/js/ScrollPic.js" />
+<script type="text/javascript">
+function init(num){
+	if(num){
+		toggle_nav(num);
+	}else{
+		toggle_nav(1);
+	}
+}
+</script>
+<script type="text/javascript">
+function fetch_object(idname){
+	var my_obj = document.getElementById(idname);
+	return my_obj;
+}
+
+function toggle_nav(obj){
+	for (i = 1; i<=6; i++ ){
+		var sub_nav = fetch_object("zzjs_nav" + i);
+		var list_nav = fetch_object("list_" + i);
+		if (obj == i){
+			sub_nav.style.display = "block";
+			list_nav.style.backgroundImage = "url(__PUBLIC__/member/images/cir_h" + obj + ".png)";
+		}else{
+			sub_nav.style.display = "none";
+			list_nav.style.backgroundImage = "url(__PUBLIC__/member/images/cir_" + i + ".png)";
+		}
+	}
+}
+</script>
+<script language="javascript">
+//创建一个showhidediv的方法，直接跟ID属性
+function showhidediv(id,pre){
+	id = pre + id;
+	var sbtitle=document.getElementById(id);
+	if(sbtitle){
+		if(sbtitle.style.display=='block'){
+			sbtitle.style.display='none';
+		}else{
+			sbtitle.style.display='block';
+		}
+	}
+}
+</script>
+<body onLoad="init('{$num}')">
+<div id="warp">
+<include file="public:header2" />
+<div id="main" class="p_t5 f_l">
+	<include file="public:ml_menu" />
+    <div id="m_l" style="float:left;width:800px;"> 
+    <div id="navigation">
+        <div id="nav_box">
+			<li><img src="__PUBLIC__/member/images/t_bg_community.png" /></li>
+			<li id="list_1" onclick="javascript:toggle_nav(1)" style="background:url(__PUBLIC__/member/images/cir_1.png) center no-repeat;width:120px;height:80px;">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+            <li id="list_2" onclick="javascript:toggle_nav(2)" style="background:url(__PUBLIC__/member/images/cir_2.png) center no-repeat;width:120px;height:80px;">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+            <li id="list_3" onclick="javascript:toggle_nav(3)" style="background:url(__PUBLIC__/member/images/cir_3.png) center no-repeat;width:120px;height:80px;">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+            <li id="list_4" onclick="javascript:toggle_nav(4)" style="background:url(__PUBLIC__/member/images/cir_4.png) center no-repeat;width:120px;height:80px;">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+            <li id="list_5" onclick="javascript:toggle_nav(5)" style="background:url(__PUBLIC__/member/images/cir_5.png) center no-repeat;width:120px;height:80px;">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+            <li id="list_6" onclick="javascript:toggle_nav(6)" style="background:url(__PUBLIC__/member/images/cir_6.png) center no-repeat;width:120px;height:80px;">&nbsp;&nbsp;&nbsp;&nbsp;</li>
+		</div>
+	</div>
+    <div id="zzjs_nav1" class="contain" style="display:block">
+		 <table width="100%" border="0"><caption>我的圈子</caption>
+            		<tr>              		
+                	</tr>
+            	<volist name="owner" id="own">
+            		<tr>
+        				<td width="80" valign="top"><eq name="own['pic']" value=""><img class="icon" src="__PUBLIC__/member/images/circle.png" /><else/><img class="icon" src="__ROOT__/{$own['pic']}" /></eq></td>
+        				<td valign="top">
+                			<div class="nick">{$own.name}（{$own.date|date="Y-m-d",###}）</div>
+                    		<div class="m_con">{$own.description}</div>
+                            <eq name="own['status']" value="1">
+                    		<div class="op">
+                        		<div class="f_r w500" onclick="window.location.href='__URL__/dissolve?cid={$own.id}'">解散圈子</div>&nbsp;
+                                <div class="f_r w500" onclick="showhidediv({$own.id},'c_')">圈子信息</div>&nbsp;
+                                <div class="f_r w500" onclick="showhidediv({$own.id},'m_')">圈子成员</div>&nbsp;
+                    		</div>
+                            <div class="m_com f_l w600" id="c_{$own.id}">
+                    	<table ><tr><td width="60"></td><td width="440"></td><td width="100"></td></tr>
+                        <tr><form action="__APP__/index/editcircle"  method="post" enctype="multipart/form-data">
+                            <td colspan="2"> 
+                            圈子名称： {$own.name} <br /> 
+                            现用logo：<img src="__ROOT__/{$own.pic}" /><br />                 	
+                			上传圈子logo：<input type="file" name="postpic" /><br /> 
+                            圈子描述：<textarea name="description" style="width:480px;height:45px;overflow:auto;margin:8px;">{$own.description}</textarea>
+                        	<input type="hidden" name="id" value="{$own.id}" />
+                        	<input type="hidden" name="num" value="1" />
+                            </td>
+                            <td align="left" valign="middle">
+                        	<input type="submit" name="Submit" value="发布" style="width:50px;height:50px;" />
+                            </td>
+                        </form>
+                        </tr>
+                        </table>
+                    </div> 
+                            <div class="m_com f_l w600" id="m_{$own.id}">
+                    	<table ><tr><td width="60"></td><td width="440"></td><td width="100"></td></tr>
+                        <tr>
+                            <td>圈子成员
+                            </td>
+                            <td colspan="2" align="left" valign="middle">
+                            <volist name="own['mem']" id="mem">
+                            <div><img src="__PUBLIC__/member/icon/1.jpg" width="60" /><br />{$mem.loginname}<br /><a href="__URL__/manage?cid={$own.id}&uid={$mem.id}&poro={$mem.poro}&t=5" title="踢出圈子">踢</a>&nbsp;<a href="__URL__/manage?cid={$own.id}&uid={$mem.id}&poro={$mem.poro}&t=6" title="加入黑名单">黑</a>&nbsp;<a href="__URL__/divert?cid={$own.id}&uid={$mem.id}&poro={$mem.poro}" title="转移圈子给TA">转</a></div>
+                            </volist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>待处理申请
+                            </td>
+                            <td colspan="2" align="left" valign="middle">
+                            <volist name="own['app']" id="app">
+                            <div><img src="__PUBLIC__/member/icon/1.jpg" width="60" /><br />{$app.loginname}<br /><a href="__URL__/manage?cid={$own.id}&uid={$app.id}&poro={$app.poro}&t=3" title="拒绝申请">拒</a>&nbsp;<a href="__URL__/manage?cid={$own.id}&uid={$app.id}&poro={$app.poro}&t=4" title="同意申请">同</a>&nbsp;<a href="__URL__/manage?cid={$own.id}&uid={$app.id}&poro={$app.poro}&t=6" title="加入黑名单">黑</a>
+                            </volist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>已拒绝的申请
+                            </td>
+                            <td colspan="2" align="left" valign="middle">
+                            <volist name="own['ref']" id="ref">
+                            <div><img src="__PUBLIC__/member/icon/1.jpg" width="60" /><br />{$ref.loginname}<br /><a href="__URL__/manage?cid={$own.id}&uid={$ref.id}&poro={$ref.poro}&t=4" title="同意申请">同</a>&nbsp;<a href="__URL__/manage?cid={$own.id}&uid={$ref.id}&poro={$ref.poro}&t=6" title="加入黑名单">黑</a>
+                            </volist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>踢出的成员
+                            </td>
+                            <td colspan="2" align="left" valign="middle">
+                            <volist name="own['fir']" id="fir">
+                            <div><img src="__PUBLIC__/member/icon/1.jpg" width="60" /><br />{$fir.loginname}<br /><a href="__URL__/manage?cid={$own.id}&uid={$fir.id}&poro={$fir.poro}&t=4" title="重新接纳">重</a>&nbsp;<a href="__URL__/manage?cid={$own.id}&uid={$fir.id}&poro={$fir.poro}&t=6" title="加入黑名单">黑</a>
+                            </volist>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>黑名单
+                            </td>
+                            <td colspan="2" align="left" valign="middle">
+                            <volist name="own['bla']" id="bla">
+                            <div><img src="__PUBLIC__/member/icon/1.jpg" width="60" /><br />{$bla.loginname}<br /><a href="__URL__/manage?cid={$own.id}&uid={$bla.id}&poro={$bla.poro}&t=4" title="同意申请">同</a>&nbsp;<a href="__URL__/manage?cid={$own.id}&uid={$bla.id}&poro={$bla.poro}&t=7" title="移出黑名单">移</a>
+                            </volist>
+                            </td>
+                        </tr>
+                        </table>
+                    </div> <else/>
+                    <div class="op">
+                        		<div class="f_r w500" onclick="window.location.href='__URL__/dissolve?cid={$own.id}'">撤销创建申请</div>&nbsp;
+                                <div class="f_r w500" onclick="showhidediv({$own.id},'c_')">圈子信息</div>&nbsp;
+                    		</div>
+                            <div class="m_com f_l w600" id="c_{$own.id}">
+                    	<table ><tr><td width="60"></td><td width="440"></td><td width="100"></td></tr>
+                        <tr>
+                            <td colspan="2"> 
+                            圈子名称： {$own.name} <br /> 
+                            现用logo：<img src="__ROOT__/{$own.pic}" /><br />         
+                            圈子描述：{$own.description}
+                            </td>
+                            <td align="left" valign="middle">
+                            </td>
+                        </tr>
+                        </table>
+                    </div> 
+                    </eq>                                   
+                		</td>
+        			</tr>
+                </volist>
+           </table>
+           <table width="100%" border="0"><caption>参与的圈子</caption>
+            		<tr>              		
+                	</tr>
+            	<volist name="join_list" id="join">
+            		<tr>
+        				<td width="80" valign="top"><eq name="join['cir']['pic']" value=""><img class="icon" src="__PUBLIC__/member/images/circle.png" /><else/><img class="icon" src="__ROOT__/{$join['cir']['pic']}" /></eq></td>
+        				<td valign="top">
+                			<div class="nick">{$join.cir.name}（{$join.cir.date|date="Y-m-d",###}）</div>
+                    		<div class="m_con">{$join.cir.description}</div>
+                    		<div class="op">
+                        		<div class="f_r w500" onclick="window.location.href='__URL__/cancelcircle?cid={$join.cid}'">退出圈子</div>
+                    		</div>                                   
+                		</td>
+        			</tr>
+                </volist>
+           </table>
+           <table width="100%" border="0"><caption>申请的圈子</caption>
+            		<tr>              		
+                	</tr>
+            	<volist name="app_list" id="app">
+            		<tr>
+        				<td width="80" valign="top"><eq name="app['cir']['pic']" value=""><img class="icon" src="__PUBLIC__/member/images/circle.png" /><else/><img class="icon" src="__ROOT__/{$app['cir']['pic']}" /></eq></td>
+        				<td valign="top">
+                			<div class="nick">{$app.cir.name}（{$app.cir.date|date="Y-m-d",###}）</div>
+                    		<div class="m_con">{$app.cir.description}</div>
+                    		<div class="op">
+                        		<div class="f_r w500" onclick="window.location.href='__URL__/cancelcircle?cid={$app.cid}'">撤销申请</div>
+                    		</div>                                   
+                		</td>
+        			</tr>
+                </volist>
+           </table>
+    </div>
+    <div id="zzjs_nav2" class="contain" style="display:block">
+                <table width="100%" border="0">
+            		<tr>              		
+                	</tr>
+            	<volist name="cir_list" id="cir">
+            		<tr>
+        				<td width="80" valign="top"><eq name="cir['pic']" value=""><img class="icon" src="__PUBLIC__/member/images/circle.png" /><else/><img class="icon" src="__ROOT__/{$cir['pic']}" /></eq></td>
+        				<td valign="top">
+                			<div class="nick">{$cir.name}（{$cir.date|date="Y-m-d",###}）</div>
+                    		<div class="m_con">{$cir.description}</div>
+                    		<div class="op">
+                        		<div class="f_r w500" onclick="window.location.href='__URL__/joincircle?cid={$cir.id}'">申请加入</div>
+                    		</div>                                   
+                		</td>
+        			</tr>
+            	</volist>
+                </table>
+    </div>
+    <div id="zzjs_nav3" class="contain" style="display:block">
+    	<table width="100%" border="0">
+            		<tr><form action="__APP__/index/addcircle"  method="post" enctype="multipart/form-data">
+                            <td colspan="2"> 
+                            圈子名称： <input type="text" name="name" value="" /> <br />
+                			上传圈子logo：<input type="file" name="postpic" /><br />   
+                            圈子描述：<textarea name="description" style="width:480px;height:45px;overflow:auto;margin:8px;"></textarea><br />   
+                        	<input type="hidden" name="num" value="1" />
+                            </td>
+                            <td align="left" valign="middle">
+                        	<input type="submit" name="Submit" value="发布" style="width:50px;height:50px;" />
+                            </td>
+                        </form>
+                        </tr>
+           </table>
+    </div>
+    <div id="zzjs_nav4" class="contain" style="display:none">
+		<table width="100%" border="0">
+            		<tr>              		
+                	</tr>
+            	<volist name="chat1" id="cha">
+            		<tr>
+        				<td width="80" valign="top"><eq name="cha['pic']" value=""><img class="icon" src="__PUBLIC__/member/images/circle.png" /><else/><img class="icon" src="__ROOT__/{$cha['pic']}" /></eq></td>
+        				<td valign="top">
+                			<div class="nick">{$cha.name}（{$cha.date|date="Y-m-d",###}）</div>
+                    		<div class="m_con"></div>
+                    		<div class="op">
+                        		
+                    		</div>                                   
+                		</td>
+        			</tr>
+            	</volist>
+                </table>
+    </div>
+    <div id="zzjs_nav5" class="contain" style="display:none">
+		<table width="100%" border="0">
+            		<tr>              		
+                	</tr>
+            	<volist name="chat1" id="cha">
+            		<tr>
+        				<td width="80" valign="top"><eq name="cha['pic']" value=""><img class="icon" src="__PUBLIC__/member/images/circle.png" /><else/><img class="icon" src="__ROOT__/{$cha['pic']}" /></eq></td>
+        				<td valign="top">
+                			<div class="nick">{$cha.name}（{$cha.date|date="Y-m-d",###}）</div>
+                    		<div class="m_con"><a href="__URL__/chat?cid={$cha.id}" target="_blank">去聊天</a></div>
+                    		<div class="op">
+                        		<volist name="cha['chat']" id="chat">
+    <div>{$chat.author.loginname}说：{$chat.content}【{$chat.posttime|date="Y-m-d H:i",###}】<a href="__URL__/addtopic?tid={$chat.id}">设为话题</a></div>
+    </volist>
+                    		</div>                                   
+                		</td>
+        			</tr>
+            	</volist>
+                <volist name="chat2" id="cha2">
+            		<tr>
+        				<td width="80" valign="top"><eq name="cha2['pic']" value=""><img class="icon" src="__PUBLIC__/member/images/circle.png" /><else/><img class="icon" src="__ROOT__/{$cha2['pic']}" /></eq></td>
+        				<td valign="top">
+                			<div class="nick">{$cha2.name}（{$cha2.date|date="Y-m-d",###}）</div>
+                    		<div class="m_con"><a href="__URL__/chat?cid={$cha2.id}" target="_blank">去聊天</a></div>
+                    		<div class="op">
+                        		<volist name="cha2['chat']" id="chat2">
+    <div>{$chat2.author.loginname}说：{$chat2.content}【{$chat2.posttime|date="Y-m-d H:i",###}】</div>
+    </volist>
+                    		</div>                                   
+                		</td>
+        			</tr>
+            	</volist>
+                </table>
+    </div>
+    <div id="zzjs_nav6" class="contain" style="display:none">
+		<table width="100%" border="0">
+            		<tr>              		
+                	</tr>
+            	<volist name="topic" id="top">
+            		<tr>
+        				<td width="80" valign="top"></td>
+        				<td valign="top">
+                			<div class="nick"><a href="__URL__/chat?cid={$top.cid}&tid={$top.id}" target="_blank">{$top.content}</a>（{$top.posttime|date="Y-m-d",###}）</div>
+                    		<div class="m_con"></div>
+                    		<div class="op">
+                        		
+                    		</div>                                   
+                		</td>
+        			</tr>
+            	</volist>
+                </table>
+    </div>
+    </div>
+    <div class="list_ f_l m_b8">&nbsp;</div>
+</div>
+</div>
+</body>
+</html>

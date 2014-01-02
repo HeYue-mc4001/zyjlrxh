@@ -1,0 +1,80 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>top</title>
+<style>
+body{
+font-size:14px;
+margin:0 auto;
+padding:0;
+font-weight:bold;
+background:url(__PUBLIC__/admin/images/top-right.gif);
+}
+a{
+color:#fff;
+font-size:14px;
+text-decoration:none;
+}
+
+#newmessage a{
+	color:red;
+}
+#newmessage a:hover{
+	color:yellow;
+}
+a:hover{
+color:yellow;
+}
+</style>
+<script type="text/javascript" src="__PUBLIC__/js/jquery.js" ></script>
+<script type="text/javascript" src="__PUBLIC__/sound/swfobject.js"></script>
+<script type="text/javascript">
+function editPassword(){
+	parent.main.location="__APP__/User/editpwd/";
+}
+function logout()
+{
+	if(confirm("该操作将退出后台管理系统，是否继续？"))
+	{
+		parent.location.href = "__APP__/login/loginout";
+	}
+}
+function checkmessage()
+{
+	$.get("__APP__/Message/checkmessage",{id:'all'},function(data){
+		
+		if( $.trim(data))
+		{
+			$("#newmessage").html('<a href="/yw_3.0/admin.php/Message/index" target="main" id="ckm" >您有'+$.trim(data)+'条未读消息</a>');
+			 play();
+		}else{
+			$("#newmessage").html('');
+		}
+		},"text");
+}
+function play()
+{
+	document.getElementById("sound").dewplay();
+}
+setInterval("checkmessage()",3000);
+</script>
+</head>
+<body>
+<div style="width:100%;height:95px;">
+
+<div style="float:right;height:30px;margin-top:35px;margin-right:15px; color:#fff;font-size:14px;">
+<object type="application/x-shockwave-flash" data="__PUBLIC__/sound/dewplayer.swf" width="1" height="1" id="sound" name="sound">
+<param name="movie" value="__PUBLIC__/sound/dewplayer.swf" />
+<param name="flashvars" value="mp3=__PUBLIC__/sound/sound.mp3&javascript=on" />
+<param name="wmode" value="transparent" />
+</object>
+ <span style="margin-right:10px;color:red;" id="newmessage" ></span>欢迎！<span style="margin-right:10px;">{$admin['nickname']}</span>
+ <span style="margin-right:10px;"><a href="__ROOT__/index.php/index/" target="_blank" class="STYLE2">首页</a></span>
+ <span style="margin-right:10px;"><a href="javascript:logout();">退出</a></span>
+ <a href="javascript:editPassword()" class="STYLE2">修改密码</a>&nbsp;
+ 
+</div>
+</div>
+</body>
+</html>

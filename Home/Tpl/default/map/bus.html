@@ -1,0 +1,201 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>公交结果面板</title>
+<style type="text/css">
+#map_canvas{width:60%;height:100%;float:left;}
+@media print {#map_canvas {height: 950px;}}
+
+<!--
+body{font-family:宋体; font-size:12px; padding:0px; margin:0px;width:100%;}
+.showWindow:hover{color:#FF0000}
+.win_bg{background:#CCC; opacity:0.2; filter:alpha(opacity=20); position:absolute; left:0px; top:0px; width:100%; height:100%; z-index:998;}
+.winTitle{background:#9DACBF; height:20px; line-height:20px}
+.winTitle .title_left{font-weight:bold; color:#FFF; padding-left:5px; float:left}
+.winTitle .title_right{float:right}
+.winTitle .title_right a{color:#000; text-decoration:none}
+.winTitle .title_right a:hover{text-decoration:underline; color:#FF0000}
+.winContent{padding:5px;}
+
+#shield{ position:absolute; top:0; left:0; background:#000; filter:ALPHA(opacity=60); z-index:1; visibility:hidden; opacity:0.6;}
+-->
+.cl{width:100px;height:70px;float:left;text-align:center;}
+#result{width:35%;height:100%;overflow-y:auto;float:right;}
+#bot{position:absolute;left:200px;z-index:100;top:0;background:#33F;}
+</style>
+<script type="text/javascript" src="http://api.go2map.com/maps/js/api_v2.5.1.js"></script>
+</head>
+ 
+<body onload="again()">
+<div id="shield" ></div>
+<div id="bot" >
+	<a class="showWindow" href="javascript:showWindow('perimeter')"><h1 style="color:#fff;">附近</h1></a>
+    <a class="showWindow" href="javascript:showWindow('bus')"><h1 style="color:#f00;">线路</h1></a>
+</div>
+<div id="map_canvas"></div>
+<input id="avoid" type="checkbox" />避开地铁
+<input type="radio" name="tactic" value="8" checked="checked" />较快捷
+<input type="radio" name="tactic" value="2" />少换乘
+<input type="radio" name="tactic" value="4" />少步行
+<input type="button" onclick="again()" value="submit" />
+<div id="result"></div>
+
+</body>
+
+</html>
+
+<script>
+var myLatLng = new sogou.maps.Point(1.337309342E7,3516875);
+var myOptions = {
+	zoom: 10,
+	center: myLatLng
+};
+var map = new sogou.maps.Map(document.getElementById("map_canvas"), myOptions);
+ 
+function callback(a){
+	var option={
+		'map':map,
+		'panel':$('result'),
+		'busResult':a
+	};
+	var bRender=new sogou.maps.BusRenderer(option);/*
+	var person = a.data;
+	for(var item in person){
+  	alert("person中"+item+"的值="+person[item]);
+ 	}*/
+	/*var b=a.data;
+    if(a&&b){
+        if(b.getSchemeNum()>0){
+            var detail=new sogou.maps.BusDetail(b.getScheme(0));//如果有方案取索引为1的方案
+             detail.setRenderer(new sogou.maps.BusDetailRenderer({'panel':document.getElementById('result')}));
+        }
+    }*/
+};
+
+function $(o){
+	return document.getElementById(o);
+}
+
+function again(){
+	var avoid = 0;
+	if($("avoid").checked){
+		avoid = 1;
+	}else{
+		avoid = 0;
+	}
+	
+	var tactic = 8;
+	for(var i=0;i<document.getElementsByName("tactic").length;i++){ 
+		if(document.getElementsByName("tactic")[i].checked){
+			tactic = document.getElementsByName("tactic")[i].value;
+		}
+	} 
+	
+	var request={
+		'map':map,
+		'destination': <?php echo $destination; ?>,
+		'origin':myLatLng,
+		'maxDist':1000,
+		'maxResultCount':30,
+		'avoid':avoid,
+		'tactic':tactic
+	}
+	
+	$("result").innerHTML = "";
+	var bus=new sogou.maps.Bus();
+	bus.route(request,callback);
+}
+
+</script>
+<script type="text/javascript">
+
+function showWindow(cate){
+	$('shield').style.width=document.body.clientWidth + 'px';
+	$("shield").style.height=document.body.clientHeight + 'px'; 
+	$("shield").style.visibility="visible";
+  
+	if(document.getElementById("divWin")){
+		$("divWin").style.zIndex=999;
+		$("divWin").style.display="";
+	}else{
+		var objWin=document.createElement("div");
+		objWin.id="divWin";
+		objWin.style.position="absolute";
+		objWin.style.width="520px";
+		objWin.style.height="220px";
+		objWin.style.border="2px solid #AEBBCA";
+		objWin.style.background="#FFF";
+		objWin.style.zIndex=999;
+		document.body.appendChild(objWin);
+	}
+  
+	$("divWin").style.top=(document.body.clientHeight/2 - 110) + 'px';
+	$("divWin").style.left=(document.body.clientWidth/2 - 260) + 'px';
+	if(document.getElementById("win_bg")){
+		$("win_bg").style.zIndex=998;
+		$("win_bg").style.display="";
+	}else{
+		var obj_bg=document.createElement("div");
+		obj_bg.id="win_bg";
+		obj_bg.className="win_bg";
+		document.body.appendChild(obj_bg);
+	}
+	var parameters = [];
+	if(cate == 'bus'){
+		parameters = [
+  			<volist name="destinations" id="dests">
+				"{$dests.id}","{$dests.destination}","",
+			</volist>
+		];
+	}
+	if(cate == 'perimeter'){
+		parameters = [
+  			<volist name="classids" id="classid">
+				"{$classid.cid}","{$classid.name}","{$classid.icon}",
+			</volist>
+		];
+	}
+	var str="";
+	str+='<div class="winTitle" onMouseDown="startMove(this,event)" onMouseUp="stopMove(this,event)"><span class="title_left">弹出式窗口</span><span class="title_right"><a href="javascript:closeWindow()" title="单击关闭此窗口">关闭</a></span><br style="clear:right"/></div><div class="winContent">';  //标题栏
+	for(var i = 0; i<(parameters.length - 1)/3;i++){
+		if(parameters[3*i+2]==""){
+			parameters[3*i+2] = "Public/images/nopic.png";
+		}
+		str+='<div class="cl"><a href="' + cate + '?id='+ parameters[3*i] +'"><img src="__ROOT__/' + parameters[3*i+2] + '" width=60 height:40 /><br />'+parameters[3*i+1] +'</a></div>';  //窗口内容
+	}
+	str+='</div>';
+	$("divWin").innerHTML=str;
+}
+
+function closeWindow(){
+	$("divWin").style.display="none";
+	$("win_bg").style.display="none";
+	$("shield").style.visibility="";
+}
+
+function $(o){
+	return document.getElementById(o);
+}
+
+function startMove(o,e){
+	var wb;
+	if(document.all && e.button==1) wb=true;
+	else if(e.button==0) wb=true;
+	if(wb){
+		var x_pos=parseInt(e.clientX-o.parentNode.offsetLeft);
+		var y_pos=parseInt(e.clientY-o.parentNode.offsetTop);
+    	if(y_pos<=o.offsetHeight){
+			document.documentElement.onmousemove=function(mEvent){
+				var eEvent=(document.all)?event:mEvent;
+				o.parentNode.style.left=eEvent.clientX-x_pos+"px";
+				o.parentNode.style.top=eEvent.clientY-y_pos+"px";
+			}
+    	}
+	}
+}
+
+function stopMove(o,e){
+	document.documentElement.onmousemove=null;
+}
+</script>

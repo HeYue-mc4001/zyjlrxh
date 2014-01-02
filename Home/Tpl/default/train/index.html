@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>培训频道——职业经理人协会</title>
+</head>
+
+<load href="__PUBLIC__/images/style_t.css" />
+<load href="__PUBLIC__/images/css.css" />
+<load href="__PUBLIC__/js/ScrollPic.js" />
+<script src="__PUBLIC__/js/jquery.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/jquery.KinSlideshow-1.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+	$("#KinSlideshow").KinSlideshow({
+			moveStyle:"down",
+			titleBar:{titleBar_height:30,titleBar_bgColor:"#08355c",titleBar_alpha:0.5},
+			titleFont:{TitleFont_size:12,TitleFont_color:"#FFFFFF",TitleFont_weight:"normal"},
+			btn:{btn_bgColor:"#FFFFFF",btn_bgHoverColor:"#1072aa",btn_fontColor:"#000000",btn_fontHoverColor:"#FFFFFF",btn_borderColor:"#cccccc",btn_borderHoverColor:"#1188c0",btn_borderWidth:1}
+	});
+})
+</script>
+<style>
+
+.a,.b,.c,.d{text-align:center;}
+.b, .c,.d{ display:none;}
+#body em{ font-style:normal; font-size:36px;}
+.buttons{
+	border-bottom:solid #d1c8b8 4px;
+	display:block;
+	padding:8px;
+	width:80px;-moz-border-radius: 1em 4em 1em 4em;
+	border-radius: 1em 4em 1em 4em;
+	text-align:center;
+	margin:1px;
+	background:#4b7975;
+	text-decoration:none; color:#FFFFFF;
+	float:left;font-family:Georgia, "Times New Roman", Times, serif; font-size:14px
+}
+.buttonHover{background:#86b8b4;border-bottom:solid #FF0000 4px;}
+a.buttons:hover{background:#86b8b4;border-bottom:solid #FF0000 4px;}
+#body {
+	background:#919b9d;
+	text-align:justify;
+	overflow:hidden;
+	color:#fff;
+	padding:20px;
+	-moz-border-radius: 1em 4em 1em 4em;
+	border-radius: 1em 4em 1em 4em;	
+	height:auto;
+	width:960px;
+	height:180px;
+}
+#wrap{
+	text-align:left;
+	overflow:hidden;
+	width:1024px;
+	height:auto;
+}
+</style>
+<script type="text/javascript">
+// <![CDATA[
+$(document).ready(function() { 
+$("#first-tab").addClass('buttonHover');
+});
+function navigate_tabs(container, tab)
+{	
+	$(".b").css('display' , 'none');
+	$(".c").css('display' , 'none');
+	$(".a").css('display' , 'none');
+	$(".d").css('display' , 'none');
+	$("#first-tab").removeClass('buttonHover');
+	$("#second-tab").removeClass('buttonHover');
+	$("#third-tab").removeClass('buttonHover');
+	$("#fourth-tab").removeClass('buttonHover');
+	$("#"+tab).addClass('buttonHover');
+	$("."+container).show('slow');
+}
+// ]]>
+</script>
+<include file="public:header" />
+<div id="main" class="p_t5">
+	<div id="m_l">
+    	<div class="list_">
+			<div id="KinSlideshow" style="visibility:hidden; float:left;">
+        	<volist name="slidelist" id="sl">
+        <a href="{$sl.link}" target="_blank"><img src="__ROOT__/{$sl.path}" alt="{$sl.title}" width="1024" height="300" /></a>
+        	</volist>
+    		</div>
+        </div>
+        <div class="list_ f_l m_t5">
+			<div id="" class="nav_ bd bg">
+    			<div class="b_h"><span class="f_l">培训推荐</span></div>
+    			<div class="b_m m_l5 f_l">
+            	<table width="100%" border="0">
+            	<volist name="train_n" id="t_n">
+            		<tr>
+                		<td width="75%"><a href="__APP__/train/content?aid={$t_n.aid}" title="{$t_n.title}" target="_blank">
+                        <li>{$t_n.title|msubstr=0,40}{$t_n.is_new}</li></a></td>
+                		<td width="25%" align="right"><span class="f_r">{$t_n.dateline|date="Y-m-d",###}</span></td>
+                	</tr>
+            	</volist>
+                </table>
+            	</div>
+    		</div>
+			<div id="" class="m_l5 bd bg nav_">
+    			<div class="b_h"><span class="f_l">培训经典</span></div>
+    			<div class="b_m m_l5 f_l">
+            	<table width="100%" border="0">
+            	<volist name="train_hot" id="t_h">
+            		<tr>
+                		<td width="75%"><a href="__APP__/train/content?aid={$t_h.aid}" title="{$t_h.title}" target="_blank">
+                        <li>{$t_h.title|msubstr=0,40}{$t_h.is_new}</li></a></td>
+                		<td width="25%" align="right"><span class="f_r">{$t_h.dateline|date="Y-m-d",###}</span></td>
+                	</tr>
+            	</volist>
+                </table>
+            	</div>
+    		</div>
+        </div>
+    </div>
+    <div id="roll">
+    	<DIV class="rollphotos">
+<DIV class=FixTitle>
+<font class="f_l m_l5">培训相关</font></DIV>
+<DIV class=blk_29>
+<DIV class=LeftBotton id=LeftArr></DIV>
+<DIV class=Cont id=ISL_Cont_1><!-- 图片列表 begin -->
+<volist name="trainimg" id="vo">
+<DIV class=box><A class=imgBorder href="__URL__/content?aid={$vo['aid']}" target=_blank><IMG height=90 alt="{$vo['title']}" src="__ROOT__/{$vo['pic']}" width=120 
+border=0></A> 
+<P><A href="__URL__/content?aid={$vo['aid']}" 
+target=_blank title="{$vo['title']}">{$vo['title']|msubstr=0,5}</A></P></DIV>
+</volist>
+<!-- 图片列表 end --></DIV>
+
+<DIV class=RightBotton id=RightArr></DIV></DIV>
+
+
+<SCRIPT language=javascript type=text/javascript>
+		<!--//--><![CDATA[//><!--
+		var scrollPic_02 = new ScrollPic();
+		scrollPic_02.scrollContId   = "ISL_Cont_1"; //内容容器ID
+		scrollPic_02.arrLeftId      = "LeftArr";//左箭头ID
+		scrollPic_02.arrRightId     = "RightArr"; //右箭头ID
+
+		scrollPic_02.frameWidth     = 908;//显示框宽度
+		scrollPic_02.pageWidth      = 152; //翻页宽度
+
+		scrollPic_02.speed          = 10; //移动速度(单位毫秒，越小越快)
+		scrollPic_02.space          = 10; //每次移动像素(单位px，越大越快)
+		scrollPic_02.autoPlay       = true; //自动播放
+		scrollPic_02.autoPlayTime   = 3; //自动播放间隔时间(秒)
+
+		scrollPic_02.initialize(); //初始化
+							
+		//--><!]]>
+</SCRIPT>
+</DIV>
+    </div>
+    <div class="list_ f_l m_b8">&nbsp;</div>
+</div>
+<include file="public:footer" />
+</body>
+</html>

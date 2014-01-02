@@ -1,0 +1,86 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>微博——会员中心</title>
+<load href="__PUBLIC__/member/images/style.css" />
+<script type="text/javascript" src="__PUBLIC__/js/menu.js"></script>
+<script type="text/javascript" src="__PUBLIC__/plug/selectivizr-1.0.2/selectivizr.js"></script>
+<script type="text/javascript">
+  window.onload = function(){
+    // 绑定菜单鼠标事件
+	menu.bindEvent();
+	// 移除当前菜单鼠标事，并修改图片地址
+	menu.removeEvent("menu_weibo",menu.name.WEIBO);
+	
+	// 绑定当前右侧菜单鼠标事件
+	menu_weibo.bindEvent();
+	// 移除当前右侧菜单鼠标事，并修改图片地址
+	menu_weibo.removeEvent("menu_weibo_new",menu_weibo.name.NEW);
+  }
+</script>
+<script language="javascript">
+//创建一个showhidediv的方法，直接跟ID属性
+function showhidediv(id){
+	id = "c_" + id;
+	var sbtitle=document.getElementById(id);
+	if(sbtitle){
+		if(sbtitle.style.display=='block'){
+			sbtitle.style.display='none';
+		}else{
+			sbtitle.style.display='block';
+		}
+	}
+}
+</script>
+</head>
+
+<body>
+<div id="warp">
+  <include file="public:header2" />
+  <div id="main">
+    <div class="main_left">
+    		<ul class="ml_menu">
+        		<li><img src="__PUBLIC__/member/images/menu_top.png" /></li>
+            	<li><a href="#"><img src="__PUBLIC__/member/images/menu_message.png" /></a></li>
+            	<li><a href="#"><img src="__PUBLIC__/member/images/menu_contacts.png" /></a></li>
+            	<li><a href="#"><img src="__PUBLIC__/member/images/menu_community.png" /></a></li>
+            	<li><a href="#"><img src="__PUBLIC__/member/images/menu_weibo.png" /></a></li>
+            	<li><a href="#"><img src="__PUBLIC__/member/images/menu_chatroom.png" /></a></li>
+            	<li><img src="__PUBLIC__/member/images/menu_bottom.png" /></li>
+        	</ul>
+    	</div>
+    <div class="main_right">
+   	  <div class="mr_menu">
+      	<ul>
+        	<li><img src="__PUBLIC__/member/images/t_bg_weibo.png" /></li>
+            <li id="menu_weibo_new"><a href="#"><img src="__PUBLIC__/member/images/menu_weibo_new_hover.png" /></a></li>
+            <li id="menu_weibo_my"><a href="#"><img src="__PUBLIC__/member/images/menu_weibo_my.png" /></a></li>
+            <li id="menu_weibo_comment"><a href="#"><img src="__PUBLIC__/member/images/menu_weibo_comment.png" /></a></li>
+            <li id="menu_weibo_collect"><a href="#"><img src="__PUBLIC__/member/images/menu_weibo_collect.png" /></a></li>
+        </ul>
+      </div>
+      <div style="width:600px;float:right;border:1px solid #f00;color:#000;">
+      <table width="100%" border="0" style="font-size:18px;">
+            	<volist name="mblog_new" id="new">
+            		<tr>
+                		<td width="450"><li>{$new.comment|msubstr=0,12}</li></td>
+                		<td width="150" align="right"><span class="f_r">{$new.parttime|date="Y-m-d",###}</span></td>
+                	</tr>
+            		<tr>
+                		<td width="75%"><div onclick="showhidediv({$new.id})">评论</div></td>
+                		<td width="25%" align="right"><a href="__URL__/colmblog?bid={$new.id}">收藏</a></td>
+                	</tr>
+                    <tr id="c_{$new.id}" style="display:none;"><form method="post" action="__APP__/index/addmblog">
+                		<td width="75%"><textarea name="comment" style="width:500px;height:100px;"></textarea>
+                        <input type="hidden" name="bid" value="{$new.id}" /><input type="hidden" name="num" value="0" /> </td>
+                		<td width="25%" align="right"><input type="submit" name="Submit" value="发布" /></td></form>
+                	</tr>
+            	</volist>
+                </table>
+      </div>
+    </div>
+  </div>
+</div>
+</body>
+</html>

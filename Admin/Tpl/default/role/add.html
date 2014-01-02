@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>{$act}用户组</title>
+<style type="text/css">
+body{
+padding:0px;
+}
+.titlebt {
+	font-size: 12px;
+	line-height: 26px;
+	font-weight: bold;
+	color: #000000;
+	background-image: url(__ROOT__/Public/admin/images/top_bt.jpg);
+	background-repeat: no-repeat;
+	display: block;
+	text-indent: 15px;
+	padding-top: 5px;
+}
+.table_list
+{
+	border:#000 1px solid;
+}
+
+.table_list th
+{
+ border:#000 1px solid;
+ border-top:none;
+border-left:none;
+}
+.table_list td
+{
+border:#000 1px dotted;
+border-top:none;
+border-left:none;
+padding-left:10px;
+}
+.previlege th
+{
+border:none;
+text-align:right;
+}
+.previlege td
+{
+border:none;
+}
+</style>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="17" valign="top" background="__ROOT__/Public/admin/images/mail_leftbg.gif"><img src="__ROOT__/Public/admin/images/left-top-right.gif" width="17" height="29" /></td>
+    <td valign="top" background="__ROOT__/Public/admin/images/content-bg.gif">
+    <table width="760" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+      <tr>
+        <td height="31"><div class="titlebt">{$act}用户组</div></td>
+      </tr>
+    </table></td>
+    <td width="16" valign="top" background="__ROOT__/Public/admin/images/mail_rightbg.gif"><img src="__ROOT__/Public/admin/images/nav-right-bg.gif" width="16" height="29" /></td>
+  </tr>
+  <tr>
+    <td valign="middle" background="__ROOT__/Public/admin/images/mail_leftbg.gif">&nbsp;</td>
+    <td valign="top" bgcolor="#F7F8F9">
+    <form action="__APP__/Role/{$action}" method="post" name="adddep">
+      <input type="hidden" name="act" value="$act">
+      <table width="100%" border="0" align="center" cellpadding="0"
+	cellspacing="0">
+        <tr>
+          <td width="4%" height="30" align="center"></td>
+          <td> </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" align="center" cellpadding="0"
+	cellspacing="0" class="table_list">
+        <tr class="row">
+          <td width="200" align="right"><strong>用户组名：</strong></td>
+          <td height="35">
+          <input name="name" type="text" style="width: 200px" value="{$role['name']}" >&nbsp;<span style="color:red">*</span>
+          </td>
+        </tr>
+        <tr class="row">
+          <td width="200" align="right"><strong>用户组权限：</strong></td>
+          <td height="35">
+          <table style="width:100%" class="previlege">
+          <tr>
+          <th width=100>
+                          用户管理
+          </th>
+          <td>
+          <input type="checkbox" name="actionlist[]" value="User_index" <?php if(in_array('User_index', $privilege)){echo "checked";} ?> /><span style="width:100px;">查看用户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <input type="checkbox" name="actionlist[]" value="User_add" <?php if(in_array('User_add', $privilege)){echo "checked";} ?> /><span style="width:100px;">添加用户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <input type="checkbox" name="actionlist[]" value="User_edit" <?php if(in_array('User_edit', $privilege)){echo "checked";} ?>  /><span style="width:100px;">编辑用户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <input type="checkbox" name="actionlist[]" value="User_delete" <?php if(in_array('User_delete', $privilege)){echo "checked";} ?> /><span style="width:100px;">删除用户&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          </td>
+          </tr>
+          <tr>
+          <th width=100 >
+                          用户组管理
+          </th>
+          <td>
+          <input type="checkbox" name="actionlist[]" value="Role_index" <?php if(in_array('Role_index', $privilege)){echo "checked";} ?> /><span style="width:100px;">查看用户组</span>
+          <input type="checkbox" name="actionlist[]" value="Role_add" <?php if(in_array('Role_add', $privilege)){echo "checked";} ?> /><span style="width:100px;">添加用户组</span>
+          <input type="checkbox" name="actionlist[]" value="Role_edit" <?php if(in_array('Role_edit', $privilege)){echo "checked";} ?> /><span style="width:100px;">编辑用户组</span>
+          <input type="checkbox" name="actionlist[]" value="Role_delete" <?php if(in_array('Role_delete', $privilege)){echo "checked";} ?> /><span style="width:100px;">删除用户组</span>
+          </td>
+          </tr>
+          <tr>
+          <th width=100>
+                           部门管理
+          </th>
+          <td>
+          <input type="checkbox" name="actionlist[]" value="Department_index" <?php if(in_array('Department_index', $privilege)){echo "checked";} ?>  /><span style="width:100px;">查看部门&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <input type="checkbox" name="actionlist[]" value="Department_add" <?php if(in_array('Department_add', $privilege)){echo "checked";} ?> /><span style="width:100px;">添加部门&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <input type="checkbox" name="actionlist[]" value="Department_edit" <?php if(in_array('Department_edit', $privilege)){echo "checked";} ?> /><span style="width:100px;">编辑部门&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <input type="checkbox" name="actionlist[]" value="Department_delete" <?php if(in_array('Department_delete', $privilege)){echo "checked";} ?> /><span style="width:100px;">删除部门&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          </td>
+          </tr>
+          <tr>
+          <th width=100>
+                           栏目管理
+          </th>
+          <td>
+          <input type="checkbox" name="actionlist[]" value="Category_index" <?php if(in_array('Category_index', $privilege)){echo "checked";} ?> /><span style="width:100px;">查看栏目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <input type="checkbox" name="actionlist[]" value="Category_add" <?php if(in_array('Category_add', $privilege)){echo "checked";} ?> /><span style="width:100px;">添加栏目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <input type="checkbox" name="actionlist[]" value="Category_edit" <?php if(in_array('Category_edit', $privilege)){echo "checked";} ?> /><span style="width:100px;">编辑栏目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <input type="checkbox" name="actionlist[]" value="Category_delete" <?php if(in_array('Category_delete', $privilege)){echo "checked";} ?> /><span style="width:100px;">删除栏目&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          </td>
+          </tr>
+          <tr>
+          <th width=100>
+                           文章管理
+          </th>
+          <td>
+          <input type="checkbox" name="actionlist[]" value="Article_index" <?php if(in_array('Article_index', $privilege)){echo "checked";} ?> /><span style="width:100px;">查看文章&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <input type="checkbox" name="actionlist[]" value="Article_add" <?php if(in_array('Article_add', $privilege)){echo "checked";} ?> /><span style="width:100px;">添加文章&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <input type="checkbox" name="actionlist[]" value="Article_edit" <?php if(in_array('Article_edit', $privilege)){echo "checked";} ?> /><span style="width:100px;">编辑文章&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <input type="checkbox" name="actionlist[]" value="Article_delete" <?php if(in_array('Article_delete', $privilege)){echo "checked";} ?> /><span style="width:100px;">删除文章&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          </td>
+          </tr>
+          <tr>
+          <th width=100>
+                           留言板管理
+          </th>
+          <td>
+          <input type="checkbox" name="actionlist[]" value="Message_index" <?php if(in_array('Message_index', $privilege)){echo "checked";} ?> /><span style="width:100px;">查看留言板</span>
+          <input type="checkbox" name="actionlist[]" value="Message_add" <?php if(in_array('Message_add', $privilege)){echo "checked";} ?> /><span style="width:100px;">添加回复&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <input type="checkbox" name="actionlist[]" value="Message_edit" <?php if(in_array('Message_edit', $privilege)){echo "checked";} ?> /><span style="width:100px;">编辑回复&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <input type="checkbox" name="actionlist[]" value="Message_delete" <?php if(in_array('Message_delete', $privilege)){echo "checked";} ?> /><span style="width:100px;">删除留言&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <input type="checkbox" name="actionlist[]" value="Message_audit" <?php if(in_array('Message_audit', $privilege)){echo "checked";} ?> /><span style="width:100px;">审核留言&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          <input type="checkbox" name="actionlist[]" value="Message_replydelete" <?php if(in_array('Message_replydelete', $privilege)){echo "checked";} ?> /><span style="width:100px;">删除回复&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span>
+          </td>
+          </tr>
+          <tr>
+          </table>
+          </td>
+        </tr>         
+         <tr class="row">
+          <td align="right"><strong>排序：</strong></td>
+          <td height="35">
+		  <input name="seq" type="text" style="width: 200px" value="{$role['seq']}">&nbsp;<span style="color:#333">默认为0，数字越小排在越前面</span>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" align="center" cellpadding="0"
+	cellspacing="0">
+        <tr><td width="200">
+        </td>
+          <td height="35"  style="text-align:left;">
+          <input type="hidden" name="id" value="{$role['id']}" />
+            <input
+			type="submit" name="button" id="button" value="提交">&nbsp;&nbsp;&nbsp;&nbsp;
+            <input
+			type="button" onClick="window.history.go(-1)" value="返回" />
+            </td>
+        </tr>
+        <tr>
+          <td height="3" background="__ROOT__/Public/admin/images/20070907_03.gif"></td>
+        </tr>
+      </table>
+    </form></td>
+    <td background="__ROOT__/Public/admin/images/mail_rightbg.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="bottom" background="__ROOT__/Public/admin/images/mail_leftbg.gif"><img src="__ROOT__/Public/admin/images/buttom_left2.gif" width="17" height="17" /></td>
+    <td background="__ROOT__/Public/admin/images/buttom_bgs.gif"><img src="__ROOT__/Public/admin/images/buttom_bgs.gif" width="17" height="17"></td>
+    <td valign="bottom" background="__ROOT__/Public/admin/images/mail_rightbg.gif"><img src="__ROOT__/Public/admin/images/buttom_right2.gif" width="16" height="17" /></td>
+  </tr>
+</table>
+</body>
+</html>

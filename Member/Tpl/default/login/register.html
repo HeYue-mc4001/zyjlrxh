@@ -1,0 +1,564 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>注册页面</title>
+</head>
+
+<load href="__PUBLIC__/images/style.css" />
+<load href="__PUBLIC__/images/css.css" />
+<load href="__PUBLIC__/js/ScrollPic.js" />
+<load href="__PUBLIC__/js/tanchuceng.js" />
+<load href="__PUBLIC__/js/lightBox.js" />
+<style type="text/css">
+body{
+color: #000;
+font-family: "宋体", arial;
+font-size: 12px;
+text-align: center;
+margin:0 auto;
+}
+.nTab{
+width: 900px;
+margin: 0 auto;
+padding:1px;
+}
+
+.nTab .TabTitle{
+clear: both;
+height: 26px;
+background:#FFA540;
+overflow: hidden;
+border:1px #BE8F00 solid;
+}
+.nTab .TabTitle ul{
+border:0;
+margin:0;
+padding:0;
+}
+.nTab .TabTitle li{
+float: left;
+width: 200px;
+cursor: pointer;
+height:26px;
+line-height:26px;
+text-align:center;
+list-style-type: none;
+font-size:18px;
+font-weight:800;
+}
+
+.nTab .TabTitle .active
+{background:#ADCD3C;}
+
+.nTab .TabTitle .normal
+{ }
+
+
+.nTab .TabContent{
+width:auto;background:#fff;
+margin: 3px auto;
+padding:0px 0 0 0;
+height:auto;
+border:0px #d3d3d3 solid;
+}
+.none {display:none;}
+table{border-collapse:collapse;}
+#tb td {
+  border-collapse:collapse;
+  font-size:18px;
+  font-weight:600;
+  border:1px solid #000;
+  line-height:28px;
+}
+/*-----------*/
+html,body{ height:100%; padding:0; margin:0; font:normal 12px/22px Arial, Helvetica, sans-serif;}
+.row{ margin:5px 0;}
+input.input,textarea{ padding:5px; border:solid 1px #bbb; width:70%;font:normal 12px/150% Arial, Helvetica, sans-serif;}
+textarea{ height:80px;}
+b.label{ width:18%; float:left; display:inline-block;margin:6px 15px 0;}
+.Boxheader,.Boxfooter,.Boxbody{ position:relative;}
+
+.headerR,.FooterR,.BodyR{ float:left;width:20px; }
+.headerL,.FooterL,.BodyL{ float:left;}
+
+.headerR{background:url(__PUBLIC__/images/lightbox-header.png) no-repeat right 0; height:46px;}
+.headerL{background:url(__PUBLIC__/images/lightbox-header.png) no-repeat left 0; height:46px;padding:0 0 0 20px;}
+
+.FooterR{background:url(__PUBLIC__/images/lightbox-footer.png) no-repeat right 0;height:59px;}
+.FooterL{background:url(__PUBLIC__/images/lightbox-footer.png) no-repeat left 0;height:39px;padding:10px 0 10px 20px;}
+
+
+
+.BodyL{background:url(__PUBLIC__/images/lightbox-body.png) repeat-y left 0;padding:10px 0 10px 20px;}
+.BodyR{background:url(__PUBLIC__/images/lightbox-body.png) repeat-y right 0;}
+
+.BoxMask{ height:100%; width:100%;left:0; top:0; background:#000;opacity:0.25;filter:alpha(opacity=25);}
+
+.Boxfooter{height:59px; }
+.Boxbody{overflow:hidden;}
+.Boxheader{ height:46px;cursor:move; }
+.Boxfooter .btn{ display:inline-block; float:right; margin:10px 10px 0 0;}
+</style>
+
+<script type="text/javascript">
+function nTabs(thisObj,Num){
+if(thisObj.className == "active")return;
+var tabObj = thisObj.parentNode.id;
+var tabList = document.getElementById(tabObj).getElementsByTagName("li");
+for(i=0; i <tabList.length; i++)
+{
+  if (i == Num)
+  {
+   thisObj.className = "active";
+   document.getElementById(tabObj+"_Content"+i).style.display = "block";
+  }
+  else
+  {
+   tabList[i].className = "normal";
+   document.getElementById(tabObj+"_Content"+i).style.display = "none";
+  }
+}
+}
+</script>
+<script type="text/javascript">
+var html1='&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本《协议》是用户与杭州和悦网络科技之间关于面视通用户注册、使用、管理所订立的协议。您的使用行为将视为对本《协议》的接受，并同意接受本《协议》各项条款的约束。<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;面视通是杭州和悦网络科技有限公司和中国电信推出的一款集通信录管理、电话拨打、短信群发、电话会议、视频会议、一站式招聘服务等多种功能于一体的国内领先的融合型通信产品，您在办公室就可以完成发布岗位、查看简历、通知面试、视频面试等招聘全过程，有效提高协同工作效率。资费标准：<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、本软件开通免收功能费；<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、通过本软件拨打电话、电话会议、短信、视频会议等所产生的通信费用按电信现行资费标准进行收取，由中国电信运营商收取，并在电信账单中体现。详情请拨打电话0571-89988152咨询。<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;相关免责条款：<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;1、使用本软件涉及到互联网服务，可能会受到各个环节的不稳定因素影响，存在因不可抗力、计算机病毒、黑客攻击、系统不稳定、用户所在位置、用户关机，非法内容信息、骚扰信息屏蔽以及其他任何网络、技术、通信线路、信息安全管理措施等原因造成的服务中断、受阻等不能满足用户要求的风险，用户须明白并自行承担以上风险，本单位不承担任何无可抗拒风险责任。<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;2、用户通过本软件与其他用户交往，因受误导或欺骗而导致或可能导致的任何心理、生理上的伤害以及经济上的损失，由过错方依法承担所有责任，一概与作本单位无关。<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本服务协议将对您使用面视通的行为产生法律约束力。';
+var	footerhtml1='<input type="image" alt="Cancel" src="__PUBLIC__/images/cancel_button.gif" class="btn" id="msg1cancel" />';	
+</script>
+
+<include file="public:header" />
+<div id="main" class="p_t5">
+    <div id="m_l" style="float:right;width:100%">        
+        <div class="list_ f_l m_t5" style="width:100%;">
+			<div id="ad_1" class="m_t5" style="padding:20px 30px;background:#fff;">
+<!-- 选项卡0开始 -->
+			<div class="nTab">
+			<!-- 标题开始 -->
+			<div class="TabTitle">
+				<ul id="myTab0">
+					<li class="active" onclick="nTabs(this,0);">团体会员申请表</li>
+					<li class="normal" onclick="nTabs(this,1);">个人会员申请表</li>        
+				</ul>
+			</div>
+            <!-- 内容开始 -->
+			<div class="TabContent">
+				<div id="myTab0_Content0">
+			<form method="post" action="__APP__/login/addregister">
+            <table id="tb" width="100%" border="1" cellpadding="0" cellspacing="0">
+            	<tr>
+                	<th width="150"></td>
+                	<th width="150"></td>
+                	<th width="40"></td>
+                	<th width="120"></td>
+                	<th width="40"></td>
+                	<th width="100"></td>
+                	<th width="30"></td>
+                	<th width="120"></td>
+                	<th width="150"></td>
+                </tr>
+            	<tr>
+                	<td width="100%" height="35" align="center" colspan="9" >
+            			<img src="__PUBLIC__/images/organize.jpg" />
+                    </td>
+                </tr>
+                <tr>
+                	<td width="150" height="40" align="center">
+            			登录账号
+                    </td>
+                	<td width="150" height="">
+            			<input type="text" name="loginname" style="width:145px;border:0;" />
+                    </td>
+                	<td width="160" height="40" align="center"  colspan="2">
+            			登录密码
+                    </td>
+                	<td width="140" height="" colspan="2">
+            			<input type="password" name="password" style="width:135px;border:0;" />
+                    </td>
+                	<td width="150" height="40" align="center" colspan="2">
+            			重复密码
+                    </td>
+                	<td width="150" height="">
+            			<input type="password" name="password1" style="width:145px;border:0;" />
+                    </td>
+                </tr>
+                <tr>
+                	<td width="150" height="40" align="center">
+            			企业名称
+                    </td>
+                	<td width="750" height="" colspan="8">
+            			<input type="text" name="realname" style="width:745px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			固定电话
+                    </td>
+                	<td width="190" height="" colspan="2">
+            			<input type="text" name="phone" style="width:185px;border:0;" />
+                    </td>
+                	<td width="560" height="" align="center" colspan="6">
+            			<input type="checkbox" name="ecp" checked="checked" value="1" />
+                        <a href="#" onclick='Box("msg1",700,400,html1,footerhtml1);'>同意中国电信面视通通信服务协议并加入成为面视通用户</a>
+					</td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			通讯地址
+                    </td>
+                	<td width="450" height="" colspan="5">
+                    	<input type="text" name="address" style="width:445px;border:0;" />
+                    </td>
+                	<td width="150" height="" align="center" colspan="2">
+            			邮政编码
+                    </td>
+                	<td width="150" height="">
+            			<input type="text" name="zipcode" style="width:145px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			企业性质
+                    </td>
+                	<td width="190" height="" colspan="2" >
+                    	<input type="text" name="type" style="width:185px;border:0;" />
+                    </td>
+                	<td width="120" height="25" align="center">
+            			注册地
+                    </td>
+                	<td width="140" height="" colspan="2" >
+                    	<input type="text" name="area" style="width:135px;border:0;" />
+                    </td>
+                	<td width="150" height="" align="center" colspan="2" >
+                    	注册资金
+                    </td>
+                	<td width="150" height="">
+            			<input type="text" name="capital" style="width:145px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="100" align="center">
+            			主要产品
+                    </td>
+                	<td width="750" height="" colspan="8">
+            			<textarea name="product" style="width:735px;height:100px;"></textarea> 
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="100" align="center">
+            			企业规模<br />
+                        固定资产
+                    </td>
+                	<td width="750" height="" colspan="8">
+            			<textarea name="description" style="width:735px;height:100px;"></textarea> 
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="80" align="center" rowspan="2">
+            			企业代表
+                    </td>
+                	<td width="150" height="40" align="center">
+                    	姓名
+                    </td>
+                	<td width="200" height="" colspan="3">
+                    	<input type="text" name="ligalname" style="width:195px;border:0;" />                    	
+                    </td>
+                	<td width="130" height="" align="center" colspan="2">
+                    	职务
+                    </td>
+                	<td width="270" height="" colspan="2">
+                    	<input type="text" name="ligalposition" style="width:265px;border:0;" />  
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+                    	联系电话
+                    </td>
+                	<td width="200" height="" colspan="3">
+                    	<input type="text" name="ligalphone" style="width:195px;border:0;" />  
+                    </td>
+                	<td width="130" height="" align="center" colspan="2">&nbsp;
+                    	
+                    </td>
+                	<td width="270" height="" align="center" colspan="2">&nbsp;
+                    	
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="160" align="center" rowspan="4">
+            			与协会<br />
+                        联系人
+                    </td>
+                	<td width="150" height="40" align="center">
+                    	姓名
+                    </td>
+                	<td width="200" height="" colspan="3">
+                    	<input type="text" name="linkman" style="width:195px;border:0;" />  
+                    </td>
+                	<td width="130" height="25" align="center" colspan="2">
+                    	联系电话
+                    </td>
+                	<td width="270" height="" colspan="2">
+                    	<input type="text" name="linkphone" style="width:265px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+                    	性别
+                    </td>
+                	<td width="200" height="" colspan="3">
+                    	<input type="text" name="linkgender" style="width:195px;border:0;" />  
+                    </td>
+                	<td width="130" height="25" align="center" colspan="2">
+                    	手机号码
+                    </td>
+                	<td width="270" height="" colspan="2">
+                    	<input type="text" name="linkmobile" style="width:195px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+                    	部门及职务
+                    </td>
+                	<td width="200" height="" colspan="3">
+                    	<input type="text" name="linkposition" style="width:195px;border:0;" />  
+                    </td>
+                	<td width="130" height="25" align="center" colspan="2">
+                    	传真
+                    </td>
+                	<td width="270" height="" colspan="2">
+                    	<input type="text" name="linkfax" style="width:265px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+                    	电子邮箱
+                    </td>
+                	<td width="200" height="" colspan="3">
+                    	<input type="text" name="linkemail" style="width:195px;border:0;" />  
+                    </td>
+                	<td width="130" height="" align="center" colspan="2">
+                    	QQ（传真）
+                    </td>
+                	<td width="270" height="" colspan="2">
+                    	<input type="text" name="linkqq" style="width:265px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="900" height="" align="center" colspan="9">
+                    	<input type="hidden" name="poro" value="1" />
+            			<input type="submit" name="Submit" value="提交" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+              </div>
+              <div id="myTab0_Content1" class="none">
+			<form method="post" action="__APP__/login/addregister">
+            <table id="tb" width="100%" border="1" cellpadding="0" cellspacing="0">
+            	<tr>
+                	<th width="150"></td>
+                	<th width="120"></td>
+                	<th width="100"></td>
+                	<th width="40"></td>
+                	<th width="110"></td>
+                	<th width="110"></td>
+                	<th width="130"></td>
+                	<th width="140"></td>
+                </tr>
+            	<tr>
+                	<td width="100%" height="35" align="center" colspan="8" >
+            			<img src="__PUBLIC__/images/person.jpg" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			登录账号
+                    </td>
+                	<td width="120" height="">
+            			<input type="text" name="loginname" style="width:115px;border:0;" />
+                    </td>
+                	<td width="140" height="40" align="center"  colspan="2">
+            			登录密码
+                    </td>
+                	<td width="110" height="">
+            			<input type="password" name="password" style="width:105px;border:0;" />
+                    </td>
+                	<td width="110" height="40" align="center">
+            			重复密码
+                    </td>
+                	<td width="270" height="" colspan="2">
+            			<input type="password" name="password1" style="width:265px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			姓名
+                    </td>
+                	<td width="220" height="" colspan="2">
+            			<input type="text" name="realname" style="width:215px;border:0;" />
+                    </td>
+                	<td width="150" height="40" align="center" colspan="2">
+            			性别
+                    </td>
+                	<td width="110" height="">
+            			<input type="text" name="gender" style="width:105px;border:0;" />
+                    </td>
+                	<td width="130" height="40" align="center">
+            			职务
+                    </td>
+                	<td width="140" height="">
+            			<input type="text" name="position" style="width:135px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			工作单位
+                    </td>
+                	<td width="480" height="" colspan="5">
+            			<input type="text" name="company" style="width:475px;border:0;" />
+                    </td>
+                	<td width="130" height="40" align="center">
+            			任职年限
+                    </td>
+                	<td width="140" height="">
+            			<input type="text" name="tenure" style="width:135px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			通信地址
+                    </td>
+                	<td width="480" height="" colspan="5">
+            			<input type="text" name="address" style="width:475px;border:0;" />
+                    </td>
+                	<td width="130" height="40" align="center">
+            			邮编
+                    </td>
+                	<td width="140" height="">
+            			<input type="text" name="zipcode" style="width:135px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			手机
+                    </td>
+                	<td width="220" height="" colspan="2">
+            			<input type="text" name="mobile" style="width:215px;border:0;" />
+                    </td>
+                	<td width="150" height="40" align="center" colspan="2">
+            			电子邮箱
+                    </td>
+                	<td width="380" height="" colspan="3">
+            			<input type="text" name="email" style="width:375px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			联系人
+                    </td>
+                	<td width="120" height="">
+            			<input type="text" name="linkman" style="width:115px;border:0;" />
+                    </td>
+                	<td width="100" height="40" align="center">
+            			联系人手机
+                    </td>
+                	<td width="150" height="" colspan="2">
+            			<input type="text" name="linkmobile" style="width:145px;border:0;" />
+                    </td>
+                	<td width="110" height="40" align="center">
+            			电子邮箱
+                    </td>
+                	<td width="270" height="" colspan="2">
+            			<input type="text" name="linkemail" style="width:265px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			所在单位情况
+                    </td>
+                	<td width="120" height="40" align="center">
+            			单位性质
+                    </td>
+                	<td width="100" height="">
+            			<input type="text" name="type" style="width:95px;border:0;" />
+                    </td>
+                	<td width="150" height="40" align="center" colspan="2">
+            			所属行业
+                    </td>
+                	<td width="110" height="">
+            			<input type="text" name="trade" style="width:105px;border:0;" />
+                    </td>
+                	<td width="130" height="40" align="center">
+            			成立时间
+                    </td>
+                	<td width="140" height="">
+            			<input type="text" name="foundtime" style="width:135px;border:0;" />
+                    </td>
+                </tr>
+                <tr>
+                	<td width="150" height="160" align="center" rowspan="4">
+            			主要经营管理工作经历
+                    </td>
+                	<td width="260" height="40" align="center" colspan="3">
+                    	起止日期
+                    </td>
+                	<td width="350" height="" align="center" colspan="3">
+                    	工作单位                    	
+                    </td>
+                	<td width="140" height="" align="center">
+                    	担任职务
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="260" height="40" align="center" colspan="3">
+                    	<input type="text" name="s1" style="width:120px;border:0;" />--<input type="text" name="e1" style="width:120px;border:0;" />
+                    </td>
+                	<td width="350" height="" colspan="3">
+                    	<input type="text" name="c1" style="width:345px;border:0;" />                    	
+                    </td>
+                	<td width="140" height="" align="center">
+                    	<input type="text" name="p1" style="width:135px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="260" height="40" align="center" colspan="3">
+                    	<input type="text" name="s2" style="width:120px;border:0;" />--<input type="text" name="e2" style="width:120px;border:0;" />
+                    </td>
+                	<td width="350" height="" colspan="3">
+                    	<input type="text" name="c2" style="width:345px;border:0;" />                    	
+                    </td>
+                	<td width="140" height="" align="center">
+                    	<input type="text" name="p2" style="width:135px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="260" height="40" align="center" colspan="3">
+                    	<input type="text" name="s3" style="width:120px;border:0;" />--<input type="text" name="e3" style="width:120px;border:0;" />
+                    </td>
+                	<td width="350" height="" colspan="3">
+                    	<input type="text" name="c3" style="width:345px;border:0;" />                    	
+                    </td>
+                	<td width="140" height="" align="center">
+                    	<input type="text" name="p3" style="width:135px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="" height="" align="center" colspan="8">
+                    	<input type="hidden" name="poro" value="2" />
+            			<input type="submit" name="Submit" value="提交" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+              </div>      
+			</div>
+			</div>
+  <!-- 选项卡0结束 --> 
+    		</div>
+        </div>
+    </div>
+    <div class="list_ f_l m_b8">&nbsp;</div>
+</div>
+<include file="public:footer" />
+</body>
+</html>

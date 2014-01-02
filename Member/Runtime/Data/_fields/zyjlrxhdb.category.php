@@ -1,0 +1,2 @@
+<?php
+return array ( 0 => 'cid', 1 => 'pcid', 2 => 'is_scroll', 3 => 'siteid', 4 => 'cname', 5 => 'module', 6 => 'posts', 7 => 'seq', 8 => 'listtpl', 9 => 'arttpl', 10 => 'savedir', 11 => 'is_audit', 12 => 'seotitle', 13 => 'keywords', 14 => 'description', 15 => 'dateline', 16 => 'pic', '_autoinc' => true, '_pk' => 'cid', ); ?>

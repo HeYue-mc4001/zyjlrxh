@@ -1,0 +1,118 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>{$act}消费项目</title>
+<style type="text/css">
+body{
+padding:0px;
+}
+.titlebt {
+	font-size: 12px;
+	line-height: 26px;
+	font-weight: bold;
+	color: #000000;
+	background-image: url(__PUBLIC__/admin/images/top_bt.jpg);
+	background-repeat: no-repeat;
+	display: block;
+	text-indent: 15px;
+	padding-top: 5px;
+}
+.table_list
+{
+	border:#000 1px solid;
+}
+
+.table_list th
+{
+ border:#000 1px solid;
+ border-top:none;
+border-left:none;
+}
+.table_list td
+{
+border:#000 1px dotted;
+border-top:none;
+border-left:none;
+padding-left:10px;
+}
+</style>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="17" valign="top" background="__PUBLIC__/admin/images/mail_leftbg.gif"><img src="__PUBLIC__/admin/images/left-top-right.gif" width="17" height="29" /></td>
+    <td valign="top" background="__PUBLIC__/admin/images/content-bg.gif">
+    <table width="760" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+      <tr>
+        <td height="31"><div class="titlebt">{$act}项目</div></td>
+      </tr>
+    </table></td>
+    <td width="16" valign="top" background="__PUBLIC__/admin/images/mail_rightbg.gif"><img src="__PUBLIC__/admin/images/nav-right-bg.gif" width="16" height="29" /></td>
+  </tr>
+  <tr>
+    <td valign="middle" background="__PUBLIC__/admin/images/mail_leftbg.gif">&nbsp;</td>
+    <td valign="top" bgcolor="#F7F8F9">
+    <form action="__APP__/Pointsitem/{$action}" method="post">
+      <table width="100%" border="0" align="center" cellpadding="0"
+	cellspacing="0">
+        <tr>
+          <td width="4%" height="30" align="center"></td>
+          <td> </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" align="center" cellpadding="0"
+	cellspacing="0" class="table_list">
+        <tr class="row">
+          <td width="120" align="right"><strong>项目名称：</strong></td>
+          <td height="35">
+            <input type="text" name="name" value="{$pointsitem['name']}" style="width: 200px">
+            <span style="color:#F00">*</span></td>
+        </tr>
+        <tr class="row">
+          <td width="120" align="right"><strong>消费分值：</strong></td>
+          <td height="35">
+            <input type="text" name="value" value="{$pointsitem['value']}" style="width: 200px">
+            <span style="color:#F00">*</span></td>
+        </tr>
+        <tr class="row">
+          <td width="120" align="right"><strong>折扣比列：</strong></td>
+          <td height="35">
+            <input type="text" name="discount" value="{$pointsitem['discount']}" style="width: 200px">
+            <span style="color:#F00">*</span></td>
+        </tr>
+        <tr class="row">
+          <td align="right"><strong>项目描述：</strong></td>
+          <td height="35">
+          <textarea name="description" style="width:90%;height:60px;">{$pointsitem['description']}</textarea>
+          </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" align="center" cellpadding="0"
+	cellspacing="0">
+        <tr><td width="200">
+        </td>
+          <td height="35"  style="text-align:left;">
+            <input
+			type="submit" name="button" id="button" value="提交">&nbsp;&nbsp;&nbsp;&nbsp;
+            <input
+			type="button" onClick="window.history.go(-1)" value="返回" />
+            <input
+			type="hidden" name="id" value="{$pointsitem['id']}">
+            </td>
+        </tr>
+        <tr>
+          <td height="3" background="__PUBLIC__/admin/images/20070907_03.gif"></td>
+        </tr>
+      </table>
+    </form></td>
+    <td background="__PUBLIC__/admin/images/mail_rightbg.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="bottom" background="__PUBLIC__/admin/images/mail_leftbg.gif"><img src="__PUBLIC__/admin/images/buttom_left2.gif" width="17" height="17" /></td>
+    <td background="__PUBLIC__/admin/images/buttom_bgs.gif"><img src="__PUBLIC__/admin/images/buttom_bgs.gif" width="17" height="17"></td>
+    <td valign="bottom" background="__PUBLIC__/admin/images/mail_rightbg.gif"><img src="__PUBLIC__/admin/images/buttom_right2.gif" width="16" height="17" /></td>
+  </tr>
+</table>
+</body>
+</html>

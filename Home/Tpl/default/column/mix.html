@@ -1,0 +1,54 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$cate_title}</title>
+</head>
+<load href="__PUBLIC__/images/style.css" />
+<script type="text/javascript">
+function navover(a){
+	var id = "nav_bg" + a;
+	var oc = document.getElementById(id);
+	oc.style.backgroundImage="url(__PUBLIC__/images/nav_bg1.png)";
+}
+
+function navout(a){
+	var id = "nav_bg" + a;
+	var oc = document.getElementById(id);
+	oc.style.backgroundImage="url(__PUBLIC__/images/nav_bg.png)";
+}
+</script>
+<body>
+<div id="header">
+	<div id="top_img">
+    	<img src="__PUBLIC__/images/header.jpg" />
+    </div>
+    <div id="navigation"><ul>
+    	<li id="nav_bg0" class="nav_list" onmouseover="navover('0')" onmouseout="navout('0')"><a href="__URL__">首页</a></li>
+        <li><img src="__PUBLIC__/images/nav_ge.png" /></li>
+    <volist name="categorylist" id="cate">
+    	<li id="nav_bg{$cate.cid}" class="nav_list" onmouseover="navover('{$cate.cid}')" onmouseout="navout('{$cate.cid}')"><a href="__URL__/column?pcid={$cate.cid}">{$cate.cname}</a></li>
+        <li><img src="__PUBLIC__/images/nav_ge.png" /></li>
+    </volist>
+    	<li id="nav_bg01" class="nav_list" onmouseover="navover('01')" onmouseout="navout('01')"><a href="__URL__/register" target="_blank">在线报名</a></li>
+    </ul></div>
+</div>
+<div id="main">
+	<div id="description">{$description}</div>
+    <div class="tjkc">
+    	<img src="__PUBLIC__/images/tjkc.jpg" />
+    </div>
+    <div class="list"><ul>
+    <volist name="artclelist" id="art">	
+        <li class="listdes">{$art.description}</li>
+        <li class="listtit">{$art.title}</li>
+    </volist>
+    </ul></div>
+</div>
+<div id="footer">
+	<div id="info">
+    	<img src="__PUBLIC__/images/foot_logo.png" /><span>版权所有：杭州市工商行政管理局  网站备案号：浙ICP备12028657号 </span><br /><span>联系地址：杭州市江干区凤起东路109号  邮编：310016 </span><br /><span>技术支持：杭州瑞合信网络科技有限公司  0571-82760000</span>
+    </div>
+</div>
+</body>
+</html>

@@ -1,0 +1,245 @@
+@charset "utf-8";
+/* CSS Document */
+body{color:#000;background:#fff;text-align:center;margin:0;}
+li{list-style-type:circle;margin:0px;padding:0px;height:15px;}
+
+div{margin:0 auto;text-align:left;}
+#header{width:1024px;height:160px;background:url(header_bg.png) repeat-x top;}
+#main{width:1024px;margin:auto;}
+#footer{width:1024px;margin:auto;}
+.f_l{float:left;}
+.f_r{float:right;}
+.b_h{width:100%;height:30px;background:url(b_h_m.png) repeat-x;}
+.b_h span{padding:4px 10px;}
+.b_m{width:96%;height:auto;padding-top:3px;}
+.bd{border:#8ccbf6 1px solid;}
+.b_b{border-bottom:#ccc 1px dashed;}
+.b_t{border-top:#000 2px solid;}
+.m_l5{margin-left:5px;}
+.m_t5{margin-top:5px;}
+.m_b8{margin-bottom:8px;}
+.w100{width:100%;}
+.p_t5{padding-top:5px;}
+.p_l5{padding-left:5px;}
+.p{padding:12px 30px;}
+.list_{width:880px;}
+.t-a-c{text-align:center;}
+.nav_{width:430px;height:256px;float:left;}
+.img_link{width:100%;height:200px;overflow:hidden;}
+.w80{width:80%;}
+.w70{width:70%;}
+.bg{background:#fff;filter:alpha(opacity=80);-moz-opacity:0.8;opacity:0.8;}
+
+
+/*头部css*/
+#logo{width:177px;heght:55px;margin:20px 0 0 30px;float:left;}
+#login{width:700px;heght:30px;margin:15px 30px 0 0;float:right;}
+#search{width:700px;heght:30px;margin:10px 30px;float:right;}
+#navigation{width:1024px;height:35px;float:left;margin:5px 0 0 0;text-align:center;}
+#nav_box{width:900px;height:35px;}
+#nav_box li{float:left;width:95px;height:25px;list-style:none;text-align:center;padding-top:10px;background:url(nav_m.png);}
+#nav_box a:link,#nav_box a:visited {width:95px;height:25px;color:#000;text-decoration:none;font-size:16px;padding-right:10px;}    
+#nav_box a:hover,#nav_box a:active{width:95px;height:25px;color:#fff;text-decoration:none;font-size:16px;}
+.headt{width:1024px;height:30px;background:#2370d8;text-align:center;float:left;padding-top:5px;}
+.headt a:link,.headt a:visited {width:120px;height:20px;color:#fff;text-decoration:none;padding:5px 12px;font-size:16px;}    
+.headt a:hover,.headt a:active{width:120px;color:#FF0000;text-decoration:none;}
+
+/*首页css*/
+#m_l{width:1024px;margin:auto;}
+#m_r{width:240px;float:right;overflow:hidden;}
+#roll{width:1024px;float:left;margin:auto;}
+#photo_wall{width:360px;height:288px;float:left;}
+#news{width:400px;height:288px;float:left;line-height:22px;}
+#video{height:155px;}
+.list_{width:1024px;}
+.nav_{width:507px;height:256px;float:left;}
+.r_b{width:235px;}
+
+
+
+/*list样式*/
+.art_tit{min-width:400px;font-family:"楷体_GB2312";font-size:18px;font-weight:700;}
+.art_des{min-width:400px;}
+
+/*
+body{color:#000;background:#fff;text-align:center;}
+.f_l{float:left;}
+.f_r{float:right;}
+.b_h{width:100%;height:30px;background:#ccc;}
+.b_h span{padding:2px 5px;}
+.b_m{width:96%;height:auto;padding-top:5px;}
+.bd{border:#bbb 1px solid;}
+.m_l5{margin-left:5px;}
+.m_t5{margin-top:5px;}
+.p_t5{padding-top:5px;}
+.list_{width:880px;}
+.t-a-c{text-align:center;}
+.img_link{width:100%;height:200px;overflow:hidden;}
+.w80{width:80%;}
+.w70{width:70%;}
+.bg{background:#fff;filter:alpha(opacity=80);-moz-opacity:0.8;opacity:0.8;}
+#navigation{height:40px;padding-top:0px !important;padding-top:8px;text-align:center;margin:0;}
+#navigation ul{height:38px;list-style:none;margin-left:50px;}
+#navigation ul li{float:left;}
+.nav_list{width:120px;height:38px;background:url(nav_bg.png) no-repeat;padding-top:8px;}
+#navigation a:link,#navigation a:visited {width:120px;color:#000000;text-decoration:none;}    
+#navigation a:hover,#navigation a:active{width:120px;color:#FF0000;text-decoration:none;}
+#header{width:1024px;}
+#top_img{width:auto;margin:auto;}
+#main{width:1260px;height:auto;min-height:1000px;background:#fff;text-align:left;}
+#m_l{width:880px;float:left;margin-left:50px;}
+#m_r{width:300px;float:left;}
+#roll{width:1160px;float:left;margin-left:50px;}
+#photo_wall{width:360px;height:288px;float:left;}
+#news{width:500px;height:auto;float:left;line-height:25px;}
+#ad_1{}
+li{list-style:none;}
+#notice{width:300px;height:256px;}
+#footer{width:1260px;height:80px;background:#fff;text-align:left;}
+#info{width:900px;margin-left:350px;padding-top:12px;}
+#info img{float:left;}
+.tjkc{width:960px;height:auto;margin-left:150px;}
+.list{width:960px;height:auto;margin-left:150px;}
+.listtit{list-style:url(li_dot.png);color:#a28237;margin:18px 0 5px 30px;}
+.listdes{list-style:none;background:url(list_bg.png) no-repeat;height:38px;padding:5px 0 0 30px;}
+.list a:link,.list a:visited {width:auto;color:#a28237;text-decoration:none;}    
+.list a:hover,.list a:active{width:auto;color:#FF0000;text-decoration:none;}
+.b1{border:#f00 1px solid;}*/
+/*--------------------------------------------
+container
+--------------------------------------------*/
+div#container {
+     width: 100%;
+     margin: 0 auto;
+     overflow: hidden;
+}
+div.examples_body {
+     width: 1024px;
+	 margin: 30px auto 0 auto;
+	 clear: both;
+	 overflow: hidden;
+	 position: relative;
+}
+h2.title_name {
+     font-family: 'Times New Roman',Times,serif;
+	 font-weight: normal;
+     font-size: 4em;
+	 margin: 0;
+     padding: 50px 0 20px 0;
+     text-align: center;
+}
+h2.title_name span {
+     font-family: 'Times New Roman',Times,serif;
+     color: #f9f66d;
+	 font-size: 0.9em;
+	 font-style: normal;
+     font-weight: normal;
+     line-height: normal;
+}
+h2.title_name small {
+     color: #505e70;
+     display: block;
+     font-family: normal Verdana,Arial,Helvetica,sans-serif;
+     font-size: 0.19em;
+     letter-spacing: 1.0em;
+	 font-weight: bold;
+     line-height: normal;
+     text-transform: uppercase;
+	 padding: 3px 0 0 0;
+}
+div.examples_body h3 {
+     color: #f9f66d;
+     font-size: 130%;
+	 padding-bottom: 15px;
+	 background: url(http://sunflowamedia.com/images/solid-line-news.gif) repeat-x bottom;
+}
+
+.copyright {
+      width: 100%;
+      color: #505e70;
+	  text-align: center;
+	  font-size: 100%;
+	  letter-spacing: 2px;
+	  margin-top: 100px;
+}
+.copyright a {
+      color: #AAA;
+}
+/* The main banner unordered list */
+.bannerHolder {
+     width: 1000px;
+	 margin: 20px 0 15px 0;
+	 padding: 20px 10px 20px 10px;
+	 background-color: #f7f7f7;
+	 border: 1px solid #eee;
+	 overflow: hidden;
+
+	/* CSS3 rounded corners */
+	 -moz-border-radius:12px;
+	 -webkit-border-radius:12px;
+	 border-radius:12px;
+}
+
+/* Hiding the bullets of the li elements: */
+.bannerHolder li {
+	list-style: none;
+	display: inline;
+}
+
+/* The banner divs */
+.banner {
+     width: 150px;
+	 height: 225px;
+	 padding-top:15px;
+	 position: relative;
+	 overflow: hidden;
+	 float: left;
+	 display: inline;
+	 margin: 0 8px
+}
+
+/* The banner divs */
+.banner img {
+     width: 150px;
+	 height: 210px;
+	 display: block;
+	 border: none;
+}
+
+/* The dark animated divs */
+.banner div {
+	 position: absolute;
+	 z-index: 100;
+	 background-color: #222;
+	 width: 60px;
+	 height: 60px;
+	 cursor: pointer;
+
+	/*	Setting a really big value for border-radius
+		will make the divs perfect circles */
+	 -moz-border-radius:100px;
+	 -webkit-border-radius:100px;
+	 border-radius:100px;
+}
+
+/*	Positioning the animated divs outside the
+	corners of the visible banner area: */
+.banner .cornerTL { left:-63px; top:-63px; }
+.banner .cornerTR { right:-63px; top:-63px; }
+.banner .cornerBL { left:-63px; bottom:-63px; }
+.banner .cornerBR { right:-63px; bottom:-63px; }
+
+/* The "Visit Company" text */
+.banner p {
+     width: 100%;
+	 left: 0;
+	 top: 57px;
+	 z-index: 200;
+	 position: absolute;
+	 font-family: Tahoma, Arial, Helvetica, sans-serif;
+	 color: #FFF;
+	 font-size: 14px;
+	 text-align: center;
+	 cursor: pointer;
+	 display: none;	/* hidden by default */
+}

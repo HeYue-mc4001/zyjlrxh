@@ -1,0 +1,200 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>微博——会员中心</title>
+</head>
+<load href="__PUBLIC__/member/images/style.css" />
+<load href="__PUBLIC__/js/lightBox.js" />
+<style type="text/css">
+body{
+color: #000;
+font-family: "宋体", arial;
+font-size: 12px;
+text-align: center;
+margin:0 auto;
+}
+.nTab{
+width: 800px;
+margin: 0 auto;
+padding:1px;
+background:#fbd46c;
+}
+
+.nTab .TabTitle{
+float:left;
+height: 70px;
+background:#fbd46c;
+overflow: hidden;
+border:0px #BE8F00 solid;
+}
+.nTab .TabTitle ul{
+border:0;
+margin:0;
+padding:0;
+}
+.nTab .TabTitle li{
+float: left;
+width: 150px;
+cursor: pointer;
+height:26px;
+line-height:26px;
+text-align:center;
+list-style-type: none;
+font-size:18px;
+font-weight:800;
+}
+
+.nTab .TabTitle .active
+{background:#ADCD3C;}
+
+.nTab .TabTitle .normal
+{ }
+
+
+.nTab .TabContent{
+width:auto;background:#fff;
+margin: 3px auto;
+padding:0px 0 0 0;
+height:auto;
+border:0px #d3d3d3 solid;
+}
+.none {display:none;}
+</style>
+<script type="text/javascript">
+function nTabs(thisObj,Num){
+	if(thisObj.className == "active")return;
+	var tabObj = thisObj.parentNode.id;
+	var tabList = document.getElementById(tabObj).getElementsByTagName("li");
+	for(i=0; i <tabList.length; i++){
+		if (i == Num){
+			thisObj.className = "active";
+			document.getElementById(tabObj+"_Content"+i).style.display = "block";
+		}else{
+			tabList[i].className = "normal";
+			document.getElementById(tabObj+"_Content"+i).style.display = "none";
+		}
+	}
+}
+</script>
+<script language="javascript">
+//创建一个showhidediv的方法，直接跟ID属性
+function showhidediv(id){
+	id = "c_" + id;
+	var sbtitle=document.getElementById(id);
+	if(sbtitle){
+		if(sbtitle.style.display=='block'){
+			sbtitle.style.display='none';
+		}else{
+			sbtitle.style.display='block';
+		}
+	}
+}
+</script>
+<body>
+<div id="warp">
+<include file="public:header2" />
+<div id="main" class="p_t5">
+    <div class="main_left">
+    		<ul class="ml_menu">
+        		<li><img src="__PUBLIC__/member/images/menu_top.png" /></li>
+            	<li><a href="#"><img src="__PUBLIC__/member/images/menu_message.png" /></a></li>
+            	<li><a href="#"><img src="__PUBLIC__/member/images/menu_contacts.png" /></a></li>
+            	<li><a href="#"><img src="__PUBLIC__/member/images/menu_community.png" /></a></li>
+            	<li><a href="#"><img src="__PUBLIC__/member/images/menu_weibo.png" /></a></li>
+            	<li><a href="#"><img src="__PUBLIC__/member/images/menu_chatroom.png" /></a></li>
+            	<li><img src="__PUBLIC__/member/images/menu_bottom.png" /></li>
+        	</ul>
+    	</div>
+    <div id="m_l" style="float:left;">        
+        <div class="list_ f_l m_t5" style="width:100%;">
+			<div id="ad_1" class="m_t5" style="background:#fbd46c;">
+<!-- 选项卡0开始 -->
+			<div class="nTab">
+			<!-- 标题开始 --><img src="__PUBLIC__/member/images/t_bg_weibo.png" style="float:left;" />
+			<div class="TabTitle">
+				<ul id="myTab0">
+					<li class="{$nor[0]}" onclick="nTabs(this,0);"><img src="__PUBLIC__/member/images/menu_weibo_new.png" /></li>
+					<li class="{$nor[1]}" onclick="nTabs(this,1);"><img src="__PUBLIC__/member/images/menu_weibo_my.png" /></li>  
+					<li class="{$nor[2]}" onclick="nTabs(this,2);"><img src="__PUBLIC__/member/images/menu_weibo_comment.png" /></li>  
+					<li class="{$nor[3]}" onclick="nTabs(this,3);"><img src="__PUBLIC__/member/images/menu_weibo_collect.png" /></li>        
+				</ul>
+			</div>
+            <!-- 内容开始 -->
+			<div class="TabContent">
+				<div id="myTab0_Content0" class="{$non[0]}">
+				<table width="100%" border="0">
+            	<volist name="mblog_new" id="new">
+            		<tr>
+                		<td width="75%"><li>{$new.comment|msubstr=0,12}</li></td>
+                		<td width="25%" align="right"><span class="f_r">{$new.parttime|date="Y-m-d",###}</span></td>
+                	</tr>
+            		<tr>
+                		<td width="75%"><div onclick="showhidediv({$new.id})">评论</div></td>
+                		<td width="25%" align="right"><a href="__URL__/colmblog?bid={$new.id}">收藏</a></td>
+                	</tr>
+                    <tr id="c_{$new.id}" style="display:none;"><form method="post" action="__APP__/index/addmblog">
+                		<td width="75%"><textarea name="comment" style="width:500px;height:100px;"></textarea>
+                        <input type="hidden" name="bid" value="{$new.id}" /><input type="hidden" name="num" value="0" /> </td>
+                		<td width="25%" align="right"><input type="submit" name="Submit" value="发布" /></td></form>
+                	</tr>
+            	</volist>
+                </table>
+              </div>
+              <div id="myTab0_Content1" class="{$non[1]}">
+				<table width="100%" border="0">
+            		<tr><form method="post" action="__APP__/index/addmblog">
+                		<td width="100%" colspan="2">
+                        <textarea name="comment" style="width:735px;height:100px;"></textarea>
+                        <input type="hidden" name="bid" value="0" /><input type="hidden" name="num" value="1" />
+                        <input type="submit" name="Submit" value="发布" />
+                        </td> </form>               		
+                	</tr>
+            	<volist name="mblog_my" id="my" empty="暂无微博！">
+            		<tr>
+                		<td width="75%"><li>{$my.comment|msubstr=0,12}</li></td>
+                		<td width="25%" align="right">
+                        	<span class="f_r">{$my.parttime|date="Y-m-d",###}</span>&nbsp;&nbsp;&nbsp;
+                        	<a href="__URL__/delmblog?bid={$my.id}&num=1">删除</a>
+                        </td>
+                	</tr>
+            	</volist>
+                </table>
+              </div> 
+              <div id="myTab0_Content2" class="{$non[2]}">
+			<table width="100%" border="0">
+            	<volist name="mblog_com" id="com" empty="暂无评论！">
+            		<tr>
+                		<td width="75%"><li>{$com.comment|msubstr=0,12}</li></td>
+                		<td width="25%" align="right">
+                        	<span class="f_r">{$com.parttime|date="Y-m-d",###}</span>&nbsp;&nbsp;&nbsp;
+                        	<a href="__URL__/delmblog?bid={$com.id}&num=2">删除</a>
+                        </td>
+                	</tr>
+            	</volist>
+                </table>
+              </div>  
+              <div id="myTab0_Content3" class="{$non[3]}">
+			<table width="100%" border="0">
+            	<volist name="mblog_col" id="col" empty="暂无收藏！">
+            		<tr>
+                		<td width="75%"><li>{$col.comment|msubstr=0,12}</li></td>
+                		<td width="25%" align="right">
+                        	<span class="f_r">{$col.parttime|date="Y-m-d",###}</span>&nbsp;&nbsp;&nbsp;
+                            <a href="__URL__/delcollect?bid={$col.id}&num=3">删除</a>
+                        </td>
+                	</tr>
+            	</volist>
+                </table>
+              </div>     
+			</div>
+			</div>
+  <!-- 选项卡0结束 --> 
+    		</div>
+        </div>
+    </div>
+    <div class="list_ f_l m_b8">&nbsp;</div>
+</div>
+</div>
+</body>
+</html>

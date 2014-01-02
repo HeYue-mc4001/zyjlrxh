@@ -1,0 +1,152 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>{$act}用户</title>
+<style type="text/css">
+body{
+padding:0px;
+}
+.titlebt {
+	font-size: 12px;
+	line-height: 26px;
+	font-weight: bold;
+	color: #000000;
+	background-image: url(__ROOT__/Public/admin/images/top_bt.jpg);
+	background-repeat: no-repeat;
+	display: block;
+	text-indent: 15px;
+	padding-top: 5px;
+}
+.table_list
+{
+	border:#000 1px solid;
+}
+
+.table_list th
+{
+ border:#000 1px solid;
+ border-top:none;
+border-left:none;
+}
+.table_list td
+{
+border:#000 1px dotted;
+border-top:none;
+border-left:none;
+padding-left:10px;
+}
+</style>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="17" valign="top" background="__ROOT__/Public/admin/images/mail_leftbg.gif"><img src="__ROOT__/Public/admin/images/left-top-right.gif" width="17" height="29" /></td>
+    <td valign="top" background="__ROOT__/Public/admin/images/content-bg.gif">
+    <table width="760" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+      <tr>
+        <td height="31"><div class="titlebt">{$act}用户</div></td>
+      </tr>
+    </table></td>
+    <td width="16" valign="top" background="__ROOT__/Public/admin/images/mail_rightbg.gif"><img src="__ROOT__/Public/admin/images/nav-right-bg.gif" width="16" height="29" /></td>
+  </tr>
+  <tr>
+    <td valign="middle" background="__ROOT__/Public/admin/images/mail_leftbg.gif">&nbsp;</td>
+    <td valign="top" bgcolor="#F7F8F9">
+    <form action="__APP__/User/editaction" method="post" name="adduser">
+      <input type="hidden" name="act" value="$act">
+      <table width="100%" border="0" align="center" cellpadding="0"
+	cellspacing="0">
+        <tr>
+          <td width="4%" height="30" align="center"></td>
+          <td> </td>
+        </tr>
+      </table>
+      <table width="100%" border="0" align="center" cellpadding="0"
+	cellspacing="0" class="table_list">
+        <tr class="row">
+          <td width="200" align="right"><strong>用户名：</strong></td>
+          <td height="35">
+          <?php if (empty($user['account']) ){ ?>
+            <input name="account" type="text" style="width: 200px">  &nbsp;
+            <?php }else{ ?>
+            {$user['account']}
+            <?php } ?></td>
+        </tr>
+        <tr class="row">
+          <td align="right"><strong>密&nbsp;&nbsp;码</strong><strong>：</strong></td>
+          <td height="35"><input name="password1" type="password"
+			style="width: 200px">  &nbsp;<span style="color:#F00">*</span>为空即不修改</td>
+        </tr>
+        <tr class="row">
+          <td align="right"><strong>重复密码：</strong></td>
+          <td height="35"><input name="password2" type="password"
+			style="width: 200px">  &nbsp;<span style="color:#F00">*</span></td>
+          </td>
+        </tr>
+        <tr class="row">
+          <td align="right"><strong>E-mail：</strong></td>
+          <td height="35"><input name="email" type="text"
+			style="width: 200px" value="{$user['email']}" >  &nbsp;</td>
+          </td>
+        </tr>
+         <tr class="row">
+          <td align="right"><strong>真实姓名：</strong></td>
+          <td height="35">
+		  <input name="nickname" type="text" style="width: 200px" value="{$user['nickname']}">  &nbsp;<span style="color:#F00">*</span>
+          </td>
+        </tr>
+         <tr class="row">
+          <td align="right"><strong>联系电话：</strong></td>
+          <td height="35">
+		  <input name="phone" type="text" style="width: 200px" value="{$user['phone']}">  &nbsp;<span style="color:#F00">*</span>
+          </td>
+        </tr>
+         <tr class="row">
+          <td align="right"><strong>用户组：</strong></td>
+          <td height="35">
+          <volist name="roleList" id="role">
+          <?php $ifname='ifrole'.$role['id'] ?>
+		  <input name="role[]" type="checkbox" value="{$role['id']}" {$$ifname} >{$role.name}
+          </volist>
+          </td>
+        </tr>
+        <tr class="row" id="department">
+          <td align="right"><strong>所属部门：</strong></td>
+          <td height="35">
+          <div style="width:500px;">
+          <volist name="departmentList" id="department">
+          <?php $ifname='ifdepartment'.$department['did'] ?>
+		  <input name="department_id" type="radio" value="{$department['did']}" {$$ifname}>{$department['name']}
+          </volist>
+          </div></td>
+        </tr>
+      </table>
+      <table width="100%" border="0" align="center" cellpadding="0"
+	cellspacing="0">
+        <tr><td width="200">
+        </td>
+          <td height="35"  style="text-align:left;">
+            <input
+			type="submit" name="button" id="button" value="提交">&nbsp;&nbsp;&nbsp;&nbsp;
+            <input
+			type="button" onClick="window.history.go(-1)" value="返回" />
+            <input
+			type="hidden" name="id" value="{$user['id']}" />
+            </td>
+        </tr>
+        <tr>
+          <td height="3" background="__ROOT__/Public/admin/images/20070907_03.gif"></td>
+        </tr>
+      </table>
+    </form></td>
+    <td background="__ROOT__/Public/admin/images/mail_rightbg.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="bottom" background="__ROOT__/Public/admin/images/mail_leftbg.gif"><img src="__ROOT__/Public/admin/images/buttom_left2.gif" width="17" height="17" /></td>
+    <td background="__ROOT__/Public/admin/images/buttom_bgs.gif"><img src="__ROOT__/Public/admin/images/buttom_bgs.gif" width="17" height="17"></td>
+    <td valign="bottom" background="__ROOT__/Public/admin/images/mail_rightbg.gif"><img src="__ROOT__/Public/admin/images/buttom_right2.gif" width="16" height="17" /></td>
+  </tr>
+</table>
+</body>
+</html>

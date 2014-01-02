@@ -1,0 +1,182 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$articlecontent.title}__{$cate_title.cname}__{$p_cate_title}频道__职业经理人协会</title>
+</head>
+<script type="text/javascript">
+var w = 240;
+var h = 59;
+var str = "";
+var obj = document.getElementById("divStayTopLeft");
+if (obj)str = obj.innerHTML;
+if( typeof document.compatMode != 'undefined' && document.compatMode != 'BackCompat'){
+document.writeln('<DIV  style="z-index:9;right:-100px;bottom:0;height:'+h+'px;width:'+w+'px;overflow:hidden;POSITION:fixed;_position:absolute; _margin-top:expression(document.documentElement.clientHeight-this.style.pixelHeight+document.documentElement.scrollTop);">');
+}
+else {
+document.writeln('<DIV  style="z-index:9;right:-100px;bottom:0;height:'+h+'px;width:'+w+'px;overflow:hidden;POSITION:fixed;*position:absolute; *top:expression(eval(document.body.scrollTop)+eval(document.body.clientHeight)-this.style.pixelHeight);">');
+}
+document.writeln('<div style="clear:both;margin:auto;height:59px;font-size:16px;overflow:hidden;font-weight:bold;text-align:left;"><a href="javascript:scroll(0,0)" hidefocus="true"><img src="__PUBLIC__/images/go_top.jpg" alt="回到顶部" style="border: 0px;" /></a></div> ');
+document.write('<div style="clear:both;margin:auto;overflow:hidden;text-align:left;">'+str+'</div>');
+document.writeln('</DIV>');
+
+</script>
+<load href="__PUBLIC__/images/style.css" />
+<load href="__PUBLIC__/images/css.css" />
+
+<include file="public:header" />
+<div id="main" class="p_t5">
+	<div id="roll">
+    	<a href="{$advdata['link']}" target="_blank"><img src="__ROOT__/{$advbanner['path']}" width="1024" height="108" /></a>
+    </div>
+    <div id="m_r" style="float:left;">
+    	<div id="menu_l" class="r_b bd f_l">
+        	<div class="b_h"><span class="f_l">{$cate_title.cname}</span><span class="f_r"></span></div>
+    		<div class="b_m m_l5">
+            <table width="100%" border="0">
+            	<volist name="art_other" id="art">
+                	<tr>
+                    	<td width="100%">
+                        	<img src="__PUBLIC__/images/art_icon.png" />
+                            <a href="__APP__/{$Think.MODULE_NAME}/content?aid={$art.aid}" title="{$art.title}">&nbsp;{$art.title|msubstr=0,11}</a>
+                        </td>
+                    </tr>
+            	</volist>
+            </table>
+            </div>
+        </div>
+        <div id="" class="r_b m_t5 img_link t-a-c f_l">
+        	<a href="{$advdatas[0]['link']}" target="_blank"><img src="__ROOT__/{$advdatas[0]['path']}" /></a>
+        </div>
+    	<div id="" class="r_b m_t5 bd f_l">
+        	<div class="b_h"><span class="f_l">推荐培训</span></div>
+    		<div class="b_m m_l5">
+            <table width="100%" border="0">
+            	<volist name="train_n" id="t_n">
+            		<tr>
+                		<td width="100%">
+                        	<img src="__PUBLIC__/images/art_icon.png" />
+                            <a href="__APP__/train/content?aid={$t_n.aid}" title="{$t_n.title}" target="_blank">
+                        {$t_n.title|msubstr=0,11}</a></td>
+                	</tr>
+            	</volist>
+            </table>
+            </div>
+        </div>
+    	<div id="video" class="r_b m_t5 bd f_l">
+        	<div class="b_h">
+            	<span class="f_l">视频</span>
+                <a href="__APP__/index/videos"><span class="f_r">更多</span></a>
+            </div>
+    		<div class="b_m m_l5">
+            <embed src="{$videodata['path']}" quality="high" width="220" height="180" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" /></embed />
+            </div>
+        </div>
+        <div id="" class="r_b m_t5 img_link t-a-c f_l">
+        	<a href="{$advdatas[1]['link']}" target="_blank"><img src="__ROOT__/{$advdatas[1]['path']}" /></a>
+        </div>
+        <div id="" class="r_b m_t5 img_link t-a-c f_l">
+        	<a href="{$advdatas[2]['link']}" target="_blank"><img src="__ROOT__/{$advdatas[2]['path']}" /></a>
+        </div>
+        <div id="" class="r_b m_t5 img_link t-a-c f_l">
+        	<a href="{$advdatas[3]['link']}" target="_blank"><img src="__ROOT__/{$advdatas[3]['path']}" /></a>
+        </div>
+    </div>
+    <div id="m_l" style="float:right;">
+    	<!--<div class="list_">
+			<div id="KinSlideshow" style="visibility:hidden; float:left;">
+        <a href="http://www.qq1.com" target="_blank"><img src="__PUBLIC__/images/images/1.jpg" alt="这是标题一" width="767" height="300" /></a>
+        <a href="http://www.qq2.com" target="_blank"><img src="__PUBLIC__/images/images/2.jpg" alt="这是标题二" width="767" height="300" /></a>
+        <a href="http://www.qq3.com" target="_blank"><img src="__PUBLIC__/images/images/3.jpg" alt="这是标题三" width="767" height="300" /></a>
+        <a href="http://www.qq4.com" target="_blank"><img src="__PUBLIC__/images/images/4.jpg" alt="这是标题四" width="767" height="300" /></a>
+        <a href="http://www.qq5.com" target="_blank"><img src="__PUBLIC__/images/images/5.jpg" alt="这是标题五" width="767" height="300" /></a>
+        <a href="http://www.qq6.com" target="_blank"><img src="__PUBLIC__/images/images/6.jpg" alt="这是标题六" width="767" height="300" /></a>
+    </div>
+        </div>-->
+        
+        <div class="list_ f_l m_t5">
+			<div id="" class="m_t5" style="height:22px;background:url(__PUBLIC__/images/path_bg.gif) repeat-x bottom;">
+            	你的位置：{$p_cate_title}&gt;&gt;{$cate_title.cname}
+    		</div>
+        </div>
+        <div class="list_ f_l m_t5">
+			<div id="" class="m_t5" style="padding:20px 30px;background:#eee;">
+            <table width="100%">
+            	<tr>
+                	<td width="100%" colspan="2" align="center">
+            			<h4>{$articlecontent.title}</h4>
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="50%" align="right">
+            			作者：{$articlecontent.author}&nbsp;&nbsp;&nbsp;
+                    </td>
+                	<td width="50%" align="left">
+            			日期：&nbsp;&nbsp;&nbsp;{$articlecontent.dateline|date="y-m-d",###}
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="100%" colspan="2" align="left">
+            			　{$articlecontent.content}
+                    </td>
+                </tr>
+            </table>
+    		</div>
+        </div>
+        <?php if($isshow){ ?>
+        <div class="list_ f_l m_t5">
+			<div id="" class="m_t5" style="padding:20px 30px;background:#eee;">
+            <form name="form1" action="__URL__/enroll" method="post" >
+            <table width="100%">
+            	<tr>
+                	<td width="50%" align="right">
+            			姓名：<input type="text" border="0" name="linkman" style="width:150px; text-align:left;" value="{$member['realname']}">
+                    </td>
+                	<td width="50%" align="left">
+            			电话：<input type="text" border="0" name="phone" style="width:150px; text-align:left;" value="{$member['mobile']}">
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="100%" colspan="2" align="center">
+            			<textarea name="message" id="message" style="width:405px;height:150px;">如有需要，在此留下你想说的话！</textarea>
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="100%" colspan="2" align="center">
+						<input type="hidden" name="aid" value="{$articlecontent.aid}" />
+						<input type="hidden" name="mid"  value="{$member['id']}" />
+						<input type="hidden" name="poro"  value="{$member['poro']}" />
+                        <input type="submit" name="button" id="button" value="我要报名">
+                    </td>
+                </tr>
+            </table>
+            </form>
+<script language="JavaScript" type="text/javascript">
+function addListener(element,e,fn){    
+	if(element.addEventListener){    
+		element.addEventListener(e,fn,false);    
+	}else{    
+		element.attachEvent("on" + e,fn);    
+	}    
+}
+var myinput = document.getElementById("message");
+addListener(myinput,"click",function(){
+	if(myinput.value=="如有需要，在此留下你想说的话！"){
+		myinput.value = "";
+	}
+})
+addListener(myinput,"blur",function(){
+	if(myinput.value==""){
+		myinput.value = "如有需要，在此留下你想说的话！";
+	}
+})
+</script>
+    		</div>
+        </div>
+        <?php } ?>
+    </div>   
+    <div class="list_ f_l m_b8">&nbsp;</div>
+</div>
+<include file="public:footer" />
+</body>
+</html>

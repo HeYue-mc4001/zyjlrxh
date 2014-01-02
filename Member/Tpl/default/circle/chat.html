@@ -1,0 +1,78 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title><eq name="tid" value="">群聊<else/>话题</eq>——会员中心</title>
+</head>
+<load href="__PUBLIC__/member/images/style.css" />
+<load href="__PUBLIC__/js/ScrollPic.js" />
+<script type="text/javascript">
+function init(num){
+	if(num){
+		toggle_nav(num);
+	}else{
+		toggle_nav(1);
+	}
+}
+</script>
+<script type="text/javascript">
+function fetch_object(idname){
+	var my_obj = document.getElementById(idname);
+	return my_obj;
+}
+
+function toggle_nav(obj){
+	for (i = 1; i<=6; i++ ){
+		var sub_nav = fetch_object("zzjs_nav" + i);
+		var list_nav = fetch_object("list_" + i);
+		if (obj == i){
+			sub_nav.style.display = "block";
+			list_nav.style.backgroundImage = "url(__PUBLIC__/member/images/cir_h" + obj + ".png)";
+		}else{
+			sub_nav.style.display = "none";
+			list_nav.style.backgroundImage = "url(__PUBLIC__/member/images/cir_" + i + ".png)";
+		}
+	}
+}
+</script>
+<script language="javascript">
+//创建一个showhidediv的方法，直接跟ID属性
+function showhidediv(id,pre){
+	id = pre + id;
+	var sbtitle=document.getElementById(id);
+	if(sbtitle){
+		if(sbtitle.style.display=='block'){
+			sbtitle.style.display='none';
+		}else{
+			sbtitle.style.display='block';
+		}
+	}
+}
+</script>
+<body onLoad="init('{$num}')">
+<div id="warp">
+<include file="public:header2" />
+<div id="main" class="p_t5 f_l">
+	<?php if($tid){ ?><div>主题：{$topic['content']}</div><?php } ?>
+	<volist name="chat_list" id="chat">
+    <div>{$chat.author.loginname}说：{$chat.content}【{$chat.posttime|date="Y-m-d H:i",###}】<eq name="power" value="1"><a href="__URL__/addtopic?tid={$chat.id}">设为话题</a></eq></div>
+    </volist>
+    <div><table width="100%" border="0">
+            		<tr><form action="__APP__/index/addchat"  method="post">
+                            <td colspan="2">   
+                            聊天内容：<textarea name="content" style="width:480px;height:45px;overflow:auto;margin:8px;border:#000 1px solid;"></textarea><br />   
+                        	<input type="hidden" name="cid" value="{$cid}" />
+                            <input type="hidden" name="tid" value="{$tid}" />
+                            <input type="hidden" name="num" value="1" />
+                            </td>
+                            <td align="left" valign="middle">
+                        	<input type="submit" name="Submit" value="发布" style="width:50px;height:50px;" />
+                            </td>
+                        </form>
+                        </tr>
+           </table></div>
+    <div class="list_ f_l m_b8">&nbsp;</div>
+</div>
+</div>
+</body>
+</html>

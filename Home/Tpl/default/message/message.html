@@ -1,0 +1,39 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>index</title>
+</head>
+
+<body>
+<h1>留言板</h1>
+<div>
+<volist name="messagelist" id="mes">
+<ul>
+<li>姓名：{$mes.name}</li>
+<li>主题：{$mes.theme}</li>
+<li>时间：{$mes.createtime|date="Y-m-d H:i",###}</li>
+<li>内容：{$mes.content}</li>
+<li>
+<volist name="mes['reply']" id="sub">
+{$i}楼&nbsp;{$sub.content}<br />
+</volist>
+</li>
+</ul>
+</volist>
+</div>
+<div>
+<ul>
+<li>
+<form name='form1' action="__URL__/addmessage" method="post">
+姓名：<input type="text" name="name" class="textinput" /><br />
+主题：<input type="text" name="theme" class="textinput" /><br />
+内容：<textarea name="content" rows="6" cols="100" style="background:#e9e9e9;"></textarea><br />
+<input type="hidden" name="is_new" value="1" />
+<input type="submit" value="提交" style="width:50px;" />
+</form>
+</li>
+</ul>
+</div>
+</body>
+</html>

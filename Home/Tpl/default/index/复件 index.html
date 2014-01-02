@@ -1,0 +1,51 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>民企大讲堂</title>
+</head>
+<load href="__PUBLIC__/images/style.css" />
+<script type="text/javascript">
+function navover(a){
+	var id = "nav_bg" + a;
+	var oc = document.getElementById(id);
+	oc.style.backgroundImage="url(__PUBLIC__/images/nav_bg1.png)";
+}
+
+function navout(a){
+	var id = "nav_bg" + a;
+	var oc = document.getElementById(id);
+	oc.style.backgroundImage="url(__PUBLIC__/images/nav_bg.png)";
+}
+</script>
+<body>
+<div class="header"><img src="__PUBLIC__/images/header.jpg" /></div>
+<div class="main"><div class="index">
+	<div id="navigation"><div id="nav_style">
+    <volist name="categorylist" id="cate">
+    	<a href="__URL__/column?pcid={$cate.cid}"><span id="nav_bg{$cate.cid}" onmouseover="navover('{$cate.cid}')" onmouseout="navout('{$cate.cid}')">{$cate.cname}</span></a><img src="__PUBLIC__/images/nav_ge.png" />
+    </volist>    
+    	<a href="__URL__/register" target="_blank"><span id="nav_bg0" onmouseover="navover('0')" onmouseout="navout('0')">在线报名</span></a>
+    </div></div>
+    <div id="description">
+    	{$description}
+    </div>
+    <div class="tjkc">
+    	<img src="__PUBLIC__/images/tjkc.jpg" />
+    </div>
+    <div class="list"><ul>
+    <volist name="artclelist" id="art">	
+        <li class="listdes">{$art.description}</li>
+        <li class="listtit">{$art.title}</li>
+    </volist>
+    </ul></div>
+</div></div>
+<div class="footer"><img src="__PUBLIC__/images/footer.jpg" /></div>
+</body>
+<!--<h1>首页</h1>
+<a href="__ROOT__/index.php/index/column">column</a><br />
+<a href="__ROOT__/index.php/index/directory">directory</a><br />
+<a href="__ROOT__/index.php/index/perimeter">map</a><br />
+<a href="__ROOT__/index.php/index/message">message</a>
+</body>-->
+</html>

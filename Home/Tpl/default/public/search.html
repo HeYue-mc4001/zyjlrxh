@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>搜索结果列表页__职业经理人协会</title>
+</head>
+<load href="__PUBLIC__/images/style.css" />
+<load href="__PUBLIC__/images/css.css" />
+<include file="public:header" />
+<div id="main" class="p_t5">
+    	<div id="ad_1" class="m_t5 p_l5" style="height:22px;background:url(__PUBLIC__/images/path_bg.gif) repeat-x bottom;">
+            	你的位置：首页&gt;&gt;搜索结果列表
+    	</div>
+        <volist name="info_list" id="info">
+        <div class="list_ f_l m_t5 bd" style="width:100%;">
+        	<div class="f_l p" style="width:100%;">
+				<div class="art_tit f_l m_l5 b_b" style="width:80%;"><img src="__PUBLIC__/images/art_icon.png" /><a href="__APP__/info/content?aid={$info.aid}" target="_blank">{$info.title}</a></div>
+            </div>
+		</div>
+        </volist>
+        <volist name="act_list" id="act">
+        <div class="list_ f_l m_t5 bd" style="width:100%;">
+        	<div class="f_l p" style="width:100%;">
+				<div class="art_tit f_l m_l5 b_b" style="width:80%;"><img src="__PUBLIC__/images/art_icon.png" /><a href="__APP__/active/content?aid={$act.aid}" target="_blank">{$act.title}</a></div>
+            </div>
+		</div>
+        </volist>
+        <volist name="mag_list" id="mag">
+        <div class="list_ f_l m_t5 bd" style="width:100%;">
+        	<div class="f_l p" style="width:100%;">
+				<div class="art_tit f_l m_l5 b_b" style="width:80%;"><img src="__PUBLIC__/images/art_icon.png" /><a href="__APP__/magazine/pageflash?aid={$mag.aid}" target="_blank">{$mag.title}</a></div>
+            </div>
+		</div>
+        </volist>
+        <volist name="lis_list" id="lis">
+        <div class="list_ f_l m_t5 bd" style="width:100%;">
+        	<div class="f_l p" style="width:100%;">
+				<div class="art_tit f_l m_l5 b_b" style="width:80%;"><img src="__PUBLIC__/images/art_icon.png" /><a href="__APP__/list/content?aid={$lis.aid}" target="_blank">{$lis.title}</a></div>
+            </div>
+		</div>
+        </volist>
+        <volist name="job_list" id="job">
+        <div class="list_ f_l m_t5 bd" style="width:100%;">
+        	<div class="f_l p" style="width:100%;">
+				<div class="art_tit f_l m_l5 b_b" style="width:80%;"><img src="__PUBLIC__/images/art_icon.png" /><a href="__APP__/job/content?aid={$job.aid}" target="_blank">{$job.title}</a></div>
+            </div>
+		</div>
+        </volist>
+        <volist name="tra_list" id="tra">
+        <div class="list_ f_l m_t5 bd" style="width:100%;">
+        	<div class="f_l p" style="width:100%;">
+				<div class="art_tit f_l m_l5 b_b" style="width:80%;"><img src="__PUBLIC__/images/art_icon.png" /><a href="__APP__/trade/content?aid={$tra.aid}" target="_blank">{$tra.title}</a></div>
+            </div>
+		</div>
+        </volist>
+        <volist name="abo_list" id="abo">
+        <div class="list_ f_l m_t5 bd" style="width:100%;">
+        	<div class="f_l p" style="width:100%;">
+				<div class="art_tit f_l m_l5 b_b" style="width:80%;"><img src="__PUBLIC__/images/art_icon.png" /><a href="__APP__/about/content?aid={$abo.aid}" target="_blank">{$abo.title}</a></div>
+            </div>
+		</div>
+        </volist>
+        <div class="list_ f_l m_b8">&nbsp;</div>
+</div>
+<include file="public:footer" />
+</body>
+</html>

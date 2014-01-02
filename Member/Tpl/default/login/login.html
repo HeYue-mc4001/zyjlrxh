@@ -1,0 +1,65 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>登录页面</title>
+</head>
+
+<load href="__PUBLIC__/images/style.css" />
+<load href="__PUBLIC__/images/css.css" />
+<load href="__PUBLIC__/js/ScrollPic.js" />
+
+<include file="public:header" />
+<div id="main" class="p_t5">
+    <div id="m_l" style="float:right;width:100%">        
+        <div class="list_ f_l m_t5" style="width:100%;">
+			<div id="ad_1" class="m_t5" style="padding:20px 30px;background:#eee;">
+            <form method="post" action="__APP__/login/loginpass">
+            <table width="100%" border="0">
+            	<tr>
+                	<td width="50%" height="35" align="center">&nbsp;
+            			
+                    </td>
+                    <td width="50%" align="center" rowspan="6">
+            			<img src="__PUBLIC__/images/server.png"  />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="" height="25" align="center">
+            			账号：<input type="text" name="name" style="width:200px;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="" height="25" align="center">
+            			密码：<input type="password" name="password" style="width:200px;"  />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="" height="25" align="center">
+            			<input type="radio" name="poro" id="per" value="2" />
+                        <label for="per">个人会员&nbsp;&nbsp;&nbsp;&nbsp;</label>
+						<input type="radio" name="poro" id="org" value="1" />
+                        <label for="org">团体会员</label>
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="" height="25" align="center">
+            			<input type="submit" name="Submit" value="登录" />&nbsp;
+						<input type="button" onClick="location.href='__ROOT__'" value="取消" />
+                    </td>
+                </tr>
+                <tr>
+                	<td width="" align="center">
+            			还不是会员？&nbsp;马上<a href="__URL__/register"><font color="#FF0000">注册</font></a>
+                    </td>
+                </tr>
+            </table>
+            </form>
+    		</div>
+        </div>
+    </div>
+        <div class="list_ f_l m_b8">&nbsp;</div>
+</div>
+<include file="public:footer" />
+</body>
+</html>

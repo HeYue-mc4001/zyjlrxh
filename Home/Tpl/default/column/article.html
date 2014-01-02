@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>{$cate_title.cname}__{$p_cate_title}频道__职业经理人协会</title>
+</head>
+<load href="__PUBLIC__/images/style.css" />
+<load href="__PUBLIC__/images/css.css" />
+<load href="__PUBLIC__/js/ScrollPic.js" />
+<script src="__PUBLIC__/js/jquery.js" type="text/javascript"></script>
+<script src="__PUBLIC__/js/jquery.KinSlideshow-1.1.js" type="text/javascript"></script>
+<script type="text/javascript">
+$(function(){
+	$("#KinSlideshow").KinSlideshow({
+			moveStyle:"down",
+			titleBar:{titleBar_height:30,titleBar_bgColor:"#08355c",titleBar_alpha:0.5},
+			titleFont:{TitleFont_size:12,TitleFont_color:"#FFFFFF",TitleFont_weight:"normal"},
+			btn:{btn_bgColor:"#FFFFFF",btn_bgHoverColor:"#1072aa",btn_fontColor:"#000000",btn_fontHoverColor:"#FFFFFF",btn_borderColor:"#cccccc",btn_borderHoverColor:"#1188c0",btn_borderWidth:1}
+	});
+})
+</script>
+<include file="public:header" />
+<div id="main" class="p_t5">
+	<div id="m_l">
+    	<div id="ad_1" class="m_t5 p_l5" style="height:22px;background:url(__PUBLIC__/images/path_bg.gif) repeat-x bottom;">
+            	你的位置：{$p_cate_title}&gt;&gt;{$cate_title.cname}
+    	</div>
+        <volist name="articlelist" id="art">
+        <div class="list_ f_l m_t5 bd">
+        	<div class="f_l p">
+        	<?php if($art['pic']){ ?>
+        		<div class="art_pic f_l"><img src="__ROOT__/{$art.pic}" width="120" height="90" /></div>
+        	<?php } ?>
+				<div class="art_tit f_l m_l5 b_b"><img src="__PUBLIC__/images/art_icon.png" /><a href="__ROOT__/index.php/{$Think.MODULE_NAME}/content?aid={$art.aid}">{$art.title}</a></div>
+            	<div class="art_des f_l m_l5 m_t5 p_t5">{$art.description|msubstr=0,200}</div>
+            </div>
+		</div>
+        </volist>
+        <div class="list_ f_l m_b8">&nbsp;</div>
+    </div>
+    <div id="m_r">
+    	<div id="connect" class="r_b bd f_r">
+        	<div class="b_h"><span class="f_l">推荐文章</span></div>
+    		<div class="b_m m_l5">
+            	<table width="100%" border="0">
+            	<volist name="con_list" id="con">
+                	<tr>
+                    	<td width="100%">
+                        	<img src="__PUBLIC__/images/art_icon.png" />
+                            <a href="__ROOT__/index.php/{$Think.MODULE_NAME}/content?aid={$con.aid}" title="{$con.title}">&nbsp;{$con.title|msubstr=0,11}</a>
+                        </td>
+                    </tr>
+            	</volist>
+                </table>
+            </div>
+        </div>
+    	<div id="" class="r_b m_t5 img_link t-a-c f_r">
+        	<a href="{$advdatas[0]['link']}" target="_blank"><img src="__ROOT__/{$advdatas[0]['path']}" /></a>
+        </div>
+    	<div id="video" class="r_b m_t5 bd f_r">
+        	<div class="b_h">
+            	<span class="f_l">视频</span>
+                <a href="__APP__/index/videos"><span class="f_r">更多</span></a>
+            </div>
+    		<div class="b_m m_l5">
+            <embed src="{$videodata['path']}" quality="high" width="220" height="180" align="middle" allowscriptaccess="always" type="application/x-shockwave-flash" /></embed />
+            </div>
+        </div>
+    	<div id="" class="r_b m_t5 img_link t-a-c f_r">
+        	<a href="{$advdatas[1]['link']}" target="_blank"><img src="__ROOT__/{$advdatas[1]['path']}" /></a>
+        </div>
+    	<div id="" class="r_b m_t5 img_link t-a-c f_r">
+        	<a href="{$advdatas[2]['link']}" target="_blank"><img src="__ROOT__/{$advdatas[2]['path']}" /></a>
+        </div>
+    	<div id="" class="r_b m_t5 img_link t-a-c f_r">
+        	<a href="{$advdatas[3]['link']}" target="_blank"><img src="__ROOT__/{$advdatas[3]['path']}" /></a>
+        </div>
+    </div>
+</div>
+<include file="public:footer" />
+</body>
+</html>

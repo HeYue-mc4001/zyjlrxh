@@ -1,0 +1,37 @@
+﻿<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>index</title>
+</head>
+
+<load href="__PUBLIC__/Js/Jquery/jquery.js" />
+<script language="JavaScript">
+    <!--
+function getDirectory(bid){
+    $.post('__URL__/getdirectory',{'bid':bid},function(data){
+		var leng = data.data.length;
+		var directory = "";
+		for(var i=0;i<leng;i++){
+			directory += '<li><img src="__ROOT__/'+data.data[i].icon+'" /><br />公司名称：' + data.data[i].name + '<br />房间号：' + data.data[i].roomnumber + '<br />描述：' + data.data[i].description + '</li>'
+		}
+        $('#result').html(directory).show();
+    },'json');
+} 
+//-->
+    </script>
+<body>
+<h1>索引页面</h1>
+<div>
+<div id="result" class="none result" style="font-family:微软雅黑,Tahoma;letter-spacing:2px"><img src="__ROOT__/{$buildingdata.pic}" /><br />{$buildingdata.name}描述:{$buildingdata.description}</div>
+<ul><li>
+<volist name="subbuildinglist" id="build">
+<input type="button" onclick="getDirectory({$build.bid})" value="{$build.name}" />&nbsp;&nbsp;&nbsp;
+</volist>
+</li></ul>
+<ul>
+<li>{$back}</li>
+</ul>
+</div>
+</body>
+</html>

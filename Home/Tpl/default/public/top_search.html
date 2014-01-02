@@ -1,0 +1,10 @@
+<form action="__ROOT__/index.php/index/search" method="post" >
+<div class="f_r"><select name="cateid" style="width:90px;height:22px;">
+    <option value="0">&nbsp;&nbsp;全部</option>
+    <volist name="categorylist" id="cate_s">
+    <option value="{$cate_s['cid']}">&nbsp;&nbsp;{$cate_s['cname']}</option>
+    </volist>
+    </select><input type="text" name="keys" style="width:200px;" />&nbsp;
+<input type="submit" value="搜索">
+</div>
+</form>

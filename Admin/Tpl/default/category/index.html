@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>栏目管理</title>
+
+<style type="text/css">
+body{
+padding:0px;
+}
+.titlebt {
+	font-size: 12px;
+	line-height: 26px;
+	font-weight: bold;
+	color: #000000;
+	background-image: url(__ROOT__/Public/admin/images/top_bt.jpg);
+	background-repeat: no-repeat;
+	display: block;
+	text-indent: 15px;
+	padding-top: 5px;
+}
+.table_list
+{
+	border:#000 1px solid;
+}
+
+.table_list th
+{
+ border:#000 1px solid;
+ border-top:none;
+border-left:none;
+}
+.table_list td
+{
+border:#000 1px dotted;
+border-top:none;
+border-left:none;
+}
+a
+{
+color:#000;
+text-decoration:none;
+}
+a:hover
+{
+color:red;
+}
+tr .relow
+{
+color:#03C;
+}
+tr .relow a
+{
+color:#03C;
+}
+tr .relow a:hover
+{
+color:red;
+}
+</style>
+<script type="text/javascript">
+<!--
+function doAction(a,id){
+	if(a=='deleteAll'){
+		if(confirm('请确认是否删除所选！')){
+			ids=getCheckedIds('checkbox');
+			window.location.href="__APP__/Category/delete/ids/"+ids;
+		}
+	}
+	if(a=='delete'){
+		if(confirm('请确认是否删除！')){
+			window.location.href="__APP__/Category/delete/id/"+id;
+		}
+	}
+}
+
+
+//全选/取消
+function checkAll(o,checkBoxName){
+	var oc = document.getElementsByName(checkBoxName);
+	for(var i=0; i<oc.length; i++) {
+		if(o.checked){
+			oc[i].checked=true;	
+		}else{
+			oc[i].checked=false;	
+		}
+	}
+	checkDeleteStatus(checkBoxName)
+}
+
+//检查有选择的项，如果有删除按钮可操作
+function checkDeleteStatus(checkBoxName){
+	var oc = document.getElementsByName(checkBoxName);
+	for(var i=0; i<oc.length; i++) {
+		if(oc[i].checked){
+			document.getElementById('DeleteCheckboxButton').disabled=false;
+			return;
+		}
+	}
+	document.getElementById('DeleteCheckboxButton').disabled=true;
+}
+
+//获取所有被选中项的ID组成字符串
+function getCheckedIds(checkBoxName){
+	var oc = document.getElementsByName(checkBoxName);
+	var CheckedIds = "";
+	for(var i=0; i<oc.length; i++) {
+		if(oc[i].checked){
+			if(CheckedIds==''){
+				CheckedIds = oc[i].value;	
+			}else{
+				CheckedIds +=","+oc[i].value;	
+			}
+			
+		}
+	}
+	return CheckedIds;
+}
+-->
+</script>
+<script language="javascript" type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function slide(obj,id)
+{
+	var items=$("."+obj);
+	//alert(items.length);
+	var subject=document.getElementById(id).getElementsByTagName("font");
+	//alert(subject[0].innerHTML);
+for(var i=0;i<items.length;i++)
+	{
+		var name=items[i].getAttribute("name");
+		if(items[i].style.display!='none')
+		{
+			subject[0].innerHTML=0;
+			items[i].style.display='none';
+			myhide(name);
+		}else{
+			subject[0].innerHTML=1;
+			items[i].style.display='table-row';
+			$("."+name).show();
+		}
+	}
+
+}
+function myhide(obj)
+{
+	var items=$("."+obj);
+	for(var i=0;i<items.length;i++)
+	{
+		var name=items[i].getAttribute("name");
+		items[i].style.display='none';
+		myhide(name);
+	}
+}
+-->
+</script>
+</head>
+
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="word-break:break-all;word-wrap:break-word;table-layout: auto;">
+  <tr>
+    <td width="17" height="29" valign="top" background="__ROOT__/Public/admin/images/mail_leftbg.gif">
+    <img src="__ROOT__/Public/admin/images/left-top-right.gif" width="17" height="29" /></td>
+    <td width="" height="29" valign="top" background="__ROOT__/Public/admin/images/content-bg.gif">
+    <table width="100%" height="29" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+      <tr>
+        <td height="29"><div class="titlebt">栏目管理</div></td>
+      </tr>
+    </table></td>
+    <td width="16" valign="top" background="__ROOT__/Public/admin/images/mail_rightbg.gif"><img src="__ROOT__/Public/admin/images/nav-right-bg.gif" width="16" height="29" /></td>
+  </tr>
+  <tr>
+    <td height="71" valign="middle" background="__ROOT__/Public/admin/images/mail_leftbg.gif">&nbsp;</td>
+    <td valign="top" bgcolor="#F7F8F9">
+    
+  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" >
+  <tr>
+    <td width="80" height="30" align="center"><button onClick="location.href='__APP__/Category/add'">添加栏目</button></td>
+    <td >&nbsp;</td>
+  </tr>
+</table>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="table_list" style="word-break:break-all;word-wrap:break-word;table-layout:fixed;">
+  <tr>
+    <th width="40" align="center" valign="middle"><input type="checkbox" name="checkbox11" value="checkbox" onClick="checkAll(this,'checkbox')"></th>
+    
+    <th width="" height="35" align="center" valign="middle">栏目名称</th>
+    <th width="120" height="35" align="center" valign="middle">列表样式</th>
+    <th width="100" align="center" valign="middle">文章数</th>
+    <th width="60" align="center" valign="middle">排序</th>
+    <th width="30%" height="35" align="center" valign="middle">操作</th>
+  </tr>
+{$list}
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" >
+  <tr>
+    <td height="35" style="text-align:left; padding-left:10px" width="100px">
+     <div style=" float:left"><input type="button" id="DeleteCheckboxButton" value="删 除" disabled="disabled" onClick="doAction('deleteAll')"></div>
+    </td><td style="text-align:center; ">
+   
+			<div></div>
+		</td>
+  </tr>
+  <tr>
+    <td height="3" colspan="2"></td>
+  </tr>
+</table>  
+</td>
+    <td background="__ROOT__/Public/admin/images/mail_rightbg.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="middle" background="__ROOT__/Public/admin/images/mail_leftbg.gif"><img src="__ROOT__/Public/admin/images/buttom_left2.gif" width="17" height="17" /></td>
+      <td height="17" valign="top" background="__ROOT__/Public/admin/images/buttom_bgs.gif"><img src="__ROOT__/Public/admin/images/buttom_bgs.gif" width="17" height="17" /></td>
+    <td background="__ROOT__/Public/admin/images/mail_rightbg.gif"><img src="__ROOT__/Public/admin/images/buttom_right2.gif" width="16" height="17" /></td>
+  </tr>
+</table>
+</body>
+
+</html>

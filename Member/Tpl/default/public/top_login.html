@@ -1,0 +1,13 @@
+<?php if($_SESSION['member']){ ?>
+<div class="f_r">你好，{$_SESSION['member']['loginname']}！&nbsp;<a href="__ROOT__/member.php/login/loginout?url_self=__SELF__">退出</a></div>
+<?php }else{ ?>
+<form action="__ROOT__/member.php/login/loginpass" method="post" >
+<div class="f_r">昵称<input type="text" name="name" />&nbsp;密码<input type="password" name="password" />&nbsp;<input type="radio" name="poro" id="per" value="2" />
+                        <label for="per">个</label>
+						<input type="radio" name="poro" id="org" value="1" />
+                        <label for="org">团</label>&nbsp;
+<input type="hidden" name="url_self" value="__SELF__" />
+<input type="submit" value="登录">&nbsp;<input type="button" onClick="location.href='__ROOT__/member.php/login/register'" value="注册" />
+</div>
+</form>
+<?php } ?>

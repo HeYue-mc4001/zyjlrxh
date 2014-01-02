@@ -1,0 +1,2 @@
+<?php
+return array ( 0 => 'id', 1 => 'aid', 2 => 'name', 3 => 'company', 4 => 'position', 5 => 'area', 6 => 'prize', 7 => 'pic', 8 => 'description', 9 => 'seq', '_autoinc' => true, '_pk' => 'id', ); ?>

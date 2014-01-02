@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>个人会员资料</title>
+<style type="text/css">
+body{
+padding:0px;
+}
+.titlebt {
+	font-size: 12px;
+	line-height: 26px;
+	font-weight: bold;
+	color: #000000;
+	background-image: url(__ROOT__/Public/admin/images/top_bt.jpg);
+	background-repeat: no-repeat;
+	display: block;
+	text-indent: 15px;
+	padding-top: 5px;
+}
+.table_list
+{
+	border:#000 1px solid;
+}
+
+.table_list th
+{
+ border:#000 1px solid;
+ border-top:none;
+border-left:none;
+}
+.table_list td
+{
+border:#000 1px dotted;
+border-top:none;
+border-left:none;
+padding-left:10px;
+}
+</style>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0">
+  <tr>
+    <td width="17" valign="top" background="__ROOT__/Public/admin/images/mail_leftbg.gif"><img src="__ROOT__/Public/admin/images/left-top-right.gif" width="17" height="29" /></td>
+    <td valign="top" background="__ROOT__/Public/admin/images/content-bg.gif">
+    <table width="760" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+      <tr>
+        <td height="31"><div class="titlebt">个人会员</div></td>
+      </tr>
+    </table></td>
+    <td width="16" valign="top" background="__ROOT__/Public/admin/images/mail_rightbg.gif"><img src="__ROOT__/Public/admin/images/nav-right-bg.gif" width="16" height="29" /></td>
+  </tr>
+  <tr>
+    <td valign="middle" background="__ROOT__/Public/admin/images/mail_leftbg.gif">&nbsp;</td>
+    <td valign="top" bgcolor="#F7F8F9">
+      <table width="100%" border="0" align="center" cellpadding="0"
+	cellspacing="0">
+        <tr>
+          <td width="4%" height="30" align="center"></td>
+          <td> </td>
+        </tr>
+      </table>
+      <form method="post" action="__APP__/Personal/editaction">
+            <table id="tb" width="100%" border="1" cellpadding="0" cellspacing="0">
+            	<tr>
+                	<th width="150"></td>
+                	<th width="120"></td>
+                	<th width="100"></td>
+                	<th width="40"></td>
+                	<th width="110"></td>
+                	<th width="110"></td>
+                	<th width="130"></td>
+                	<th width="140"></td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			登录账号
+                    </td>
+                	<td width="120" height="">
+            			<input type="text" name="loginname" style="width:115px;border:0;" value="{$per['loginname']}" />
+                    </td>
+                	<td width="140" height="40" align="center"  colspan="2">
+            			登录密码
+                    </td>
+                	<td width="110" height="">
+            			<input type="password" name="password" style="width:105px;border:0;" />
+                    </td>
+                	<td width="110" height="40" align="center">
+            			重复密码
+                    </td>
+                	<td width="270" height="" colspan="2">
+            			<input type="password" name="password1" style="width:265px;border:0;" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			姓名
+                    </td>
+                	<td width="220" height="" colspan="2">
+            			<input type="text" name="realname" style="width:215px;border:0;" value="{$per['realname']}" />
+                    </td>
+                	<td width="150" height="40" align="center" colspan="2">
+            			性别
+                    </td>
+                	<td width="110" height="">
+            			<input type="text" name="gender" style="width:105px;border:0;" value="{$per['gender']}" />
+                    </td>
+                	<td width="130" height="40" align="center">
+            			职务
+                    </td>
+                	<td width="140" height="">
+            			<input type="text" name="position" style="width:135px;border:0;" value="{$per['position']}" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			工作单位
+                    </td>
+                	<td width="480" height="" colspan="5">
+            			<input type="text" name="company" style="width:475px;border:0;" value="{$per['company']}" />
+                    </td>
+                	<td width="130" height="40" align="center">
+            			任职年限
+                    </td>
+                	<td width="140" height="">
+            			<input type="text" name="tenure" style="width:135px;border:0;" value="{$per['tenure']}" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			通信地址
+                    </td>
+                	<td width="480" height="" colspan="5">
+            			<input type="text" name="address" style="width:475px;border:0;" value="{$per['address']}" />
+                    </td>
+                	<td width="130" height="40" align="center">
+            			邮编
+                    </td>
+                	<td width="140" height="">
+            			<input type="text" name="zipcode" style="width:135px;border:0;" value="{$per['zipcode']}" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			手机
+                    </td>
+                	<td width="220" height="" colspan="2">
+            			<input type="text" name="mobile" style="width:215px;border:0;" value="{$per['mobile']}" />
+                    </td>
+                	<td width="150" height="40" align="center" colspan="2">
+            			电子邮箱
+                    </td>
+                	<td width="380" height="" colspan="3">
+            			<input type="text" name="email" style="width:375px;border:0;" value="{$per['email']}" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			联系人
+                    </td>
+                	<td width="120" height="">
+            			<input type="text" name="linkman" style="width:115px;border:0;" value="{$per['linkman']}" />
+                    </td>
+                	<td width="100" height="40" align="center">
+            			联系人手机
+                    </td>
+                	<td width="150" height="" colspan="2">
+            			<input type="text" name="linkmobile" style="width:145px;border:0;" value="{$per['linkmobile']}" />
+                    </td>
+                	<td width="110" height="40" align="center">
+            			电子邮箱
+                    </td>
+                	<td width="270" height="" colspan="2">
+            			<input type="text" name="linkemail" style="width:265px;border:0;" value="{$per['linkemail']}" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+            			所在单位情况
+                    </td>
+                	<td width="120" height="40" align="center">
+            			单位性质
+                    </td>
+                	<td width="100" height="">
+            			<input type="text" name="type" style="width:95px;border:0;" value="{$per['type']}" />
+                    </td>
+                	<td width="150" height="40" align="center" colspan="2">
+            			所属行业
+                    </td>
+                	<td width="110" height="">
+            			<input type="text" name="trade" style="width:105px;border:0;" value="{$per['trade']}" />
+                    </td>
+                	<td width="130" height="40" align="center">
+            			成立时间
+                    </td>
+                	<td width="140" height="">
+            			<input type="text" name="foundtime" style="width:135px;border:0;" value="{$per['foundtime']}" />
+                    </td>
+                </tr>
+                <tr>
+                	<td width="150" height="160" align="center" rowspan="4">
+            			主要经营管理工作经历
+                    </td>
+                	<td width="260" height="40" align="center" colspan="3">
+                    	起止日期
+                    </td>
+                	<td width="350" height="" colspan="3">
+                    	工作单位                    	
+                    </td>
+                	<td width="140" height="" align="center">
+                    	担任职务
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="260" height="40" align="center" colspan="3">
+                    	<input type="text" name="s1" style="width:120px;border:0;" value="{$per['s1']}" />--<input type="text" name="e1" style="width:120px;border:0;" value="{$per['e1']}" />
+                    </td>
+                	<td width="350" height="" colspan="3">
+                    	<input type="text" name="c1" style="width:345px;border:0;" value="{$per['c1']}" />                    	
+                    </td>
+                	<td width="140" height="" align="center">
+                    	<input type="text" name="p1" style="width:135px;border:0;" value="{$per['p1']}" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="260" height="40" align="center" colspan="3">
+                    	<input type="text" name="s2" style="width:120px;border:0;" value="{$per['s2']}" />--<input type="text" name="e2" style="width:120px;border:0;" value="{$per['e2']}" />
+                    </td>
+                	<td width="350" height="" colspan="3">
+                    	<input type="text" name="c2" style="width:345px;border:0;" value="{$per['c2']}" />                    	
+                    </td>
+                	<td width="140" height="" align="center">
+                    	<input type="text" name="p2" style="width:135px;border:0;" value="{$per['p2']}" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="260" height="40" align="center" colspan="3">
+                    	<input type="text" name="s3" style="width:120px;border:0;" value="{$per['s3']}" />--<input type="text" name="e3" style="width:120px;border:0;" value="{$per['e3']}" />
+                    </td>
+                	<td width="350" height="" colspan="3">
+                    	<input type="text" name="c3" style="width:345px;border:0;" value="{$per['c3']}" />                    	
+                    </td>
+                	<td width="140" height="" align="center">
+                    	<input type="text" name="p3" style="width:135px;border:0;" value="{$per['p3']}" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="150" height="40" align="center">
+                    	审核状态
+                    </td>
+                	<td width="750" height="" align="left" colspan="7">
+                    	{$per['audit']}<input type="hidden" name="id" value="{$per['id']}" />
+                    </td>
+                </tr>
+            	<tr>
+                	<td width="900" height="40" align="center" colspan="8">
+                    	<input type="submit" value="修改会员信息">&nbsp;&nbsp;&nbsp;&nbsp;
+						<input type="button" onClick="window.location.href='__APP__/Personal/'" value="返回会员列表" />
+                    </td>
+                </tr>
+            </table>
+            </form>
+      <table width="100%" border="0" align="center" cellpadding="0"
+	cellspacing="0">
+        <tr><td width="200">
+        </td>
+          <td height="35"  style="text-align:left;">
+            
+            </td>
+        </tr>
+        <tr>
+          <td height="3" background="__ROOT__/Public/admin/images/20070907_03.gif"></td>
+        </tr>
+      </table></td>
+    <td background="__ROOT__/Public/admin/images/mail_rightbg.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="bottom" background="__ROOT__/Public/admin/images/mail_leftbg.gif"><img src="__ROOT__/Public/admin/images/buttom_left2.gif" width="17" height="17" /></td>
+    <td background="__ROOT__/Public/admin/images/buttom_bgs.gif"><img src="__ROOT__/Public/admin/images/buttom_bgs.gif" width="17" height="17"></td>
+    <td valign="bottom" background="__ROOT__/Public/admin/images/mail_rightbg.gif"><img src="__ROOT__/Public/admin/images/buttom_right2.gif" width="16" height="17" /></td>
+  </tr>
+</table>
+</body>
+</html>

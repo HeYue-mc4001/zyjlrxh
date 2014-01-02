@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>在线订阅__杂志频道__职业经理人协会</title>
+</head>
+<load href="__PUBLIC__/images/style_t.css" />
+<load href="__PUBLIC__/images/css.css" />
+<load href="__PUBLIC__/js/ScrollPic.js" />
+<script src="__PUBLIC__/js/jquery.js" type="text/javascript"></script>
+<script type="text/javascript" src="__PUBLIC__/js/script.js"></script>
+<script type="text/javascript">
+<!--
+function verify(){
+	if(document.getElementsByName("name")[0].value=="")alert("姓名必须填写！");
+	else if(document.getElementsByName("address")[0].value=="")alert("地址必须填写！");
+	else if(document.getElementsByName("phone")[0].value=="")alert("电话必须填写！");
+	else doAction();
+}
+
+function doAction(){
+	var order=getCheckedIds('checkbox');
+	var suborder = order.split("|");
+	var strs = suborder[0];
+	var ids = suborder[1];
+	if(ids==""){
+		alert("你没有订阅任何刊物！");
+	}else{
+		if(confirm('您的订单如下：\n'+strs)){
+			document.getElementsByName("goods")[0].value = ids;
+			form1.submit();
+		}
+	}
+}
+
+//获取所有被选中项的ID组成字符串
+function getCheckedIds(checkBoxName){
+	var oc = document.getElementsByName(checkBoxName);
+	var CheckedIds = "";
+	var strs = "";
+	var us = "";
+	var mybooks = new Array();
+	<volist name="catelist" id="cate">
+	<volist name="cate['list']" id="lis">
+	mybooks['{$lis['aid']}'] = "{$lis['title']}";
+	</volist>
+	</volist>
+	for(var i=0; i<oc.length; i++) {
+		if(oc[i].checked){
+			var v = oc[i].value;
+			var obj =  document.getElementById("n_"+v);
+			var num = obj.value;
+			var str = mybooks[v] + "*" + num;
+			var u = v + "-" + num;
+			if(strs==''){
+				strs = str;
+			}else{
+				strs +="\n"+str;
+			}
+			if(us==''){
+				us = u;	
+			}else{
+				us +=","+u;
+			}
+			
+		}
+	}
+	CheckedIds = strs + "|" + us;
+	return CheckedIds;
+}
+-->
+</script>
+<include file="public:header" />
+<div id="main" class="p_t5">
+	<form name="form1" action="__URL__/addorder" method="post" >
+	<div id="container">
+    <div style="width:100%;">
+	<table>
+    <volist name="catelist" id="cate">
+    <tr><td><h2>{$cate['cname']}</h2></td></tr>
+    <tr><volist name="cate['list']" id="maga" mod="4">
+    	<td width="200"><table>
+        	<tr>
+            	<td rowspan="4"><img src="__ROOT__/{$maga['pic']}" width="80" alt="" /></td>
+            	<td>{$maga['title']}</td>
+            </tr>
+        	<tr>
+            	<td>价格:￥{$maga['content']}</td>
+            </tr>
+        	<tr>
+            	<td><label for="m_{$maga['aid']}">订阅：</label><input type="checkbox" name="checkbox" id="m_{$maga['aid']}" value="{$maga['aid']}" />
+</td>
+            </tr>
+        	<tr>
+            	<td>数量:<select name="" id="n_{$maga['aid']}" style="width:45px">
+    				<option value="1">1</option>
+                    <option value="2">2</option>
+    				<option value="3">3</option>
+                    <option value="4">4</option>
+    				<option value="5">5</option>
+                    <option value="6">6</option>
+    				<option value="7">7</option>
+                    <option value="8">8</option>
+    				<option value="9">9</option>
+                    <option value="10">&gt;9</option>
+    				</select>
+                </td>
+            </tr>
+        </table></td>
+        <eq name="mod" value="3"></tr><tr></eq>
+        </volist>
+    </tr>
+    </volist>
+    </table>
+    </div>
+    
+    <div style="width:80%;">
+    <table width="100%">
+    <tr>
+    <td align="right" width="">姓名：<input type="text" border="0" class="input" name="name" style="width:300px; text-align:left;"></td>
+    <td align="right" width="300" rowspan="4"><table>
+        <tr>
+            <td align="left" valign="middle">表单填写说明：<br />1、勾选需要订阅的杂志，选择每种订阅数量；<br />2、填写姓名、地址和联系电话;<br />3、固话的填写格式：057182760000<br />4、如果单册订阅数量大于9，请选择&gt;9</td>
+        </tr>
+    </table></td>
+    </tr>
+    <tr>
+    <td align="right">地址：<input type="text" border="0" name="address" style="width:300px; text-align:left;"></td>
+    </tr>
+    <tr>
+    <td align="right">电话：<input type="text" border="0" name="phone" style="width:300px; text-align:left;"></td>
+    </tr>
+    <tr>
+    <td align="right">
+    <input type="hidden" name="goods" value="" />
+    <input type="button" value="提交订单" onclick="verify()"  style="width:75px; height:25px; font-size:14px;"></td>
+    </tr>
+    </table>
+    </div>
+	</div>
+    </form>
+</div>
+<include file="public:footer" />
+</body>
+</html>

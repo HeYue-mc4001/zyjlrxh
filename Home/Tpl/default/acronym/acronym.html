@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>智能查询</title>
+<style>
+body{color:#000; clear:both;font-size:44px;}
+img{border:0;}
+a:link{ text-decoration:none;}
+a:active {  text-decoration:none;}
+a:visited{color:#FF9933; text-decoration:none;}
+.date-picker-wp {
+display: none;
+position: absolute;
+background: #f1f1f1;
+left: 40px;
+top: 40px;
+border-top: 4px solid #3879d9;
+}
+.date-picker-wp table {
+border: 1px solid #ddd;
+}
+.date-picker-wp td {
+background: #fafafa;
+width: 22px;
+height: 18px;
+border: 1px solid #ccc;
+font-size: 12px;
+text-align: center;
+}
+.date-picker-wp td.noborder {
+border: none;
+background: none;
+}
+.date-picker-wp td a {
+color: #1c93c4;
+text-decoration: none;
+}
+.strong {font-weight: bold}
+.hand {cursor: pointer; color: #3879d9}
+</style>
+</head>
+<body style="width:768px;height:1366px;margin:0;">
+<script>
+function getString(a)
+{
+var string=document.getElementById("acronym")
+string.value=string.value+a
+//alert(string.value);
+}
+function cancle(){
+	document.getElementById("acronym").value="";
+}
+function ensure(){
+	var acronym=document.getElementById("acronym").value;
+	window.location.href="__APP__/Index/acronym/acr/"+acronym;
+}
+</script>
+<div class="">
+	<h2 class="col-h2">按字母顺序检索</h2>
+    <input type="text" name="search" id="acronym" value="" />
+    <input type="submit" value="确认" onclick="ensure()" />
+    <input type="button" value="清除" onclick="cancle()" /><br />
+	<button onclick="getString('A')">A</button>
+	<button onclick="getString('B')">B</button>
+	<button onclick="getString('C')">C</button>
+	<button onclick="getString('D')">D</button>
+	<button onclick="getString('E')">E</button>
+	<button onclick="getString('F')">F</button>
+	<button onclick="getString('G')">G</button>
+	<button onclick="getString('H')">H</button>
+	<button onclick="getString('I')">I</button>
+	<button onclick="getString('J')">J</button>
+	<button onclick="getString('K')">K</button>
+	<button onclick="getString('L')">L</button>
+	<button onclick="getString('M')">M</button>
+	<button onclick="getString('N')">N</button>
+	<button onclick="getString('O')">O</button>
+	<button onclick="getString('P')">P</button>
+	<button onclick="getString('Q')">Q</button>
+	<button onclick="getString('R')">R</button>
+	<button onclick="getString('S')">S</button>
+	<button onclick="getString('T')">T</button>
+	<button onclick="getString('U')">U</button>
+	<button onclick="getString('V')">V</button>
+	<button onclick="getString('W')">W</button>
+	<button onclick="getString('X')">X</button>
+	<button onclick="getString('Y')">Y</button>
+	<button onclick="getString('Z')">Z</button><br />
+	<button onclick="getString('1')">1</button>
+	<button onclick="getString('2')">2</button>
+	<button onclick="getString('3')">3</button>
+	<button onclick="getString('4')">4</button>
+	<button onclick="getString('5')">5</button>
+	<button onclick="getString('6')">6</button>
+	<button onclick="getString('7')">7</button>
+	<button onclick="getString('8')">8</button>
+	<button onclick="getString('9')">9</button>
+	<button onclick="getString('0')">0</button>
+
+	</div>
+    <div><ul>
+    <volist name="result" id="res">
+    <li><img src="__ROOT__/{$res.icon}" /><br />{$res.name}</li>
+    </volist>
+    </ul></div>
+</div>
+</body>
+</html>

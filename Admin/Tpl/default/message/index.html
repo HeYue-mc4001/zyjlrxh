@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>留言板管理</title>
+
+<style type="text/css">
+body{
+padding:0px;
+}
+.titlebt {
+	font-size: 12px;
+	line-height: 26px;
+	font-weight: bold;
+	color: #000000;
+	background-image: url(__PUBLIC__/admin/images/top_bt.jpg);
+	background-repeat: no-repeat;
+	display: block;
+	text-indent: 15px;
+	padding-top: 5px;
+}
+.table_list
+{
+	border:#000 1px solid;
+}
+
+.table_list th
+{
+ border:#000 1px solid;
+ border-top:none;
+border-left:none;
+}
+.table_list td
+{
+border:#000 1px dotted;
+border-top:none;
+border-left:none;
+}
+a
+{
+color:#000;
+text-decoration:none;
+}
+a:hover
+{
+color:red;
+}
+tr .relow
+{
+color:#03C;
+}
+tr .relow a
+{
+color:#03C;
+}
+tr .relow a:hover
+{
+color:red;
+}
+</style>
+<script type="text/javascript">
+<!--
+function doAction(a,id){
+	if(a=='deleteAll'){
+		if(confirm('请确认是否删除所选！')){
+			ids=getCheckedIds('checkbox');
+			window.location.href="__APP__/Message/delete/ids/"+ids;
+		}
+	}
+	if(a=='delete'){
+		if(confirm('请确认是否删除！')){
+			window.location.href="__APP__/Message/delete/id/"+id;
+		}
+	}
+}
+
+
+//全选/取消
+function checkAll(o,checkBoxName){
+	var oc = document.getElementsByName(checkBoxName);
+	for(var i=0; i<oc.length; i++) {
+		if(o.checked){
+			oc[i].checked=true;	
+		}else{
+			oc[i].checked=false;	
+		}
+	}
+	checkDeleteStatus(checkBoxName)
+}
+
+//检查有选择的项，如果有删除按钮可操作
+function checkDeleteStatus(checkBoxName){
+	var oc = document.getElementsByName(checkBoxName);
+	for(var i=0; i<oc.length; i++) {
+		if(oc[i].checked){
+			document.getElementById('DeleteCheckboxButton').disabled=false;
+			return;
+		}
+	}
+	document.getElementById('DeleteCheckboxButton').disabled=true;
+}
+
+//获取所有被选中项的ID组成字符串
+function getCheckedIds(checkBoxName){
+	var oc = document.getElementsByName(checkBoxName);
+	var CheckedIds = "";
+	for(var i=0; i<oc.length; i++) {
+		if(oc[i].checked){
+			if(CheckedIds==''){
+				CheckedIds = oc[i].value;	
+			}else{
+				CheckedIds +=","+oc[i].value;	
+			}
+			
+		}
+	}
+	return CheckedIds;
+}
+-->
+</script>
+<script language="javascript" type="text/javascript" src="__PUBLIC__/js/jquery.js"></script>
+<script language="javascript" type="text/javascript">
+<!--
+function slide(obj,id)
+{
+	var items=$("."+obj);
+	//alert(items.length);
+	var subject=document.getElementById(id).getElementsByTagName("font");
+	//alert(subject[0].innerHTML);
+for(var i=0;i<items.length;i++)
+	{
+		var name=items[i].name;
+		if(items[i].style.display!='none')
+		{
+			subject[0].innerHTML=0;
+			items[i].style.display='none';
+			$("."+name).hide();
+		}else{
+			subject[0].innerHTML=1;
+			items[i].style.display='block';
+			$("."+name).show();
+		}
+	}
+
+}
+-->
+</script>
+</head>
+
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="word-break:break-all;word-wrap:break-word;table-layout: auto;">
+  <tr>
+    <td width="17" height="29" valign="top" background="__PUBLIC__/admin/images/mail_leftbg.gif">
+    <img src="__PUBLIC__/admin/images/left-top-right.gif" width="17" height="29" /></td>
+    <td width="" height="29" valign="top" background="__PUBLIC__/admin/images/content-bg.gif">
+    <table width="100%" height="29" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+      <tr>
+        <td height="29"><div class="titlebt">留言板管理</div></td>
+      </tr>
+    </table></td>
+    <td width="16" valign="top" background="__PUBLIC__/admin/images/mail_rightbg.gif"><img src="__PUBLIC__/admin/images/nav-right-bg.gif" width="16" height="29" /></td>
+  </tr>
+  <tr>
+    <td height="71" valign="middle" background="__PUBLIC__/admin/images/mail_leftbg.gif">&nbsp;</td>
+    <td valign="top" bgcolor="#F7F8F9">
+    
+  <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" >
+  <tr>
+    <td width="80" height="30" align="center"></td>
+    <td >&nbsp;</td>
+  </tr>
+</table>
+<table width="100%" border="0" align="center" cellpadding="0" cellspacing="0" class="table_list" style="word-break:break-all;word-wrap:break-word;table-layout:fixed;">
+  <tr>
+    <th width="40" align="center" valign="middle"><input type="checkbox" name="checkbox11" value="checkbox" onClick="checkAll(this,'checkbox')"></th>
+    
+    <th width="" height="35" align="center" valign="middle">标题</th>
+    <th width="100" height="35" align="center" valign="middle">留言人</th>
+    <th width="150" align="center" valign="middle">时间</th>
+    <th width="20%" height="35" align="center" valign="middle">操作</th>
+  </tr>
+<volist name="messagelist" id="vo">
+  <tr onMouseOver="this.className='relow'" onMouseOut="this.className='row'" class="row">
+    <td align="center" valign="middle" ><input type="checkbox" name="checkbox" value="{$vo['id']}" onClick="checkDeleteStatus('checkbox')"></td>
+    <td align="center" valign="middle" ><?php if($vo['is_new']==1){ $new='new!'; }else{ $new=''; } ?><span style="color:red;" >{$new}</span>&nbsp; {$vo['theme']}&nbsp;</td>
+    <td height="35" align="center" valign="middle" >{$vo['name']}&nbsp;</td>
+    <td align="center" valign="middle">
+    {$vo['createtime']|date="Y-m-d H:i",###}
+    </td>
+    <td height="35" align="center" valign="middle">
+    <a href="__APP__/Message/detail/id/{$vo['id']}" style="border:none;">详情</a>&nbsp;
+    <a href="javascript:void(0);" onClick="doAction('delete',{$vo['id']})" >删除</a></td>
+  </tr>
+  </volist>
+</table>
+
+<table width="100%" border="0" cellpadding="0" cellspacing="0" >
+  <tr>
+    <td height="35" style="text-align:left; padding-left:10px" width="100px">
+     <div style=" float:left"><input type="button" id="DeleteCheckboxButton" value="删 除" disabled="disabled" onClick="doAction('deleteAll')"></div>
+    </td><td style="text-align:center; ">
+   
+			<div></div>
+		</td>
+  </tr>
+  <tr>
+    <td height="3" colspan="2"></td>
+  </tr>
+</table>  
+</td>
+    <td background="__PUBLIC__/admin/images/mail_rightbg.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="middle" background="__PUBLIC__/admin/images/mail_leftbg.gif"><img src="__PUBLIC__/admin/images/buttom_left2.gif" width="17" height="17" /></td>
+      <td height="17" valign="top" background="__PUBLIC__/admin/images/buttom_bgs.gif"><img src="__PUBLIC__/admin/images/buttom_bgs.gif" width="17" height="17" /></td>
+    <td background="__PUBLIC__/admin/images/mail_rightbg.gif"><img src="__PUBLIC__/admin/images/buttom_right2.gif" width="16" height="17" /></td>
+  </tr>
+</table>
+</body>
+
+</html>

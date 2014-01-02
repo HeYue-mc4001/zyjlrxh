@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>后台内容首页</title>
+<style type="text/css" >
+.main{ 
+width:1100px;
+float:left;
+margin:0 auto;
+}
+.titlebt{
+font-weight:bold;
+}
+.column {
+    width: 49%;
+	float: left;
+	margin:0 5px;
+}
+
+dl {
+display: block;
+min-height:230px;
+border: 1px solid #15659A;
+width: 98%;
+margin-left: 1%;
+float:left;
+padding:0px;
+}
+dl dt {
+    background-color: #15659A;
+    border-bottom: 1px solid #15659A;
+    color: #4D6C2F;
+    font-weight: bold;
+    height:25px;
+    line-height: 20px;
+    float:left;
+    width:100%;
+}
+.dboxtable{
+   width:96%;
+   float:left;
+   margin:0 auto;
+   font-size:14px; 
+}
+.dboxtable td{
+   border-bottom:1px #099 dashed;
+}
+.nowtable{
+    color:#000;
+    float:left;
+    width:100%;
+}
+.nowtable a{
+color:red;
+text-decoration:none;
+}
+.nowtable a:hover{
+color: #030;
+text-decoration:none;
+}
+</style>
+</head>
+<body>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" >
+  <tr>
+    <td width="17" height="29" valign="top" background="__ROOT__/Public/admin/images/mail_leftbg.gif"><img src="__ROOT__/Public/admin/images/left-top-right.gif" width="17" height="29" /></td>
+    <td width="1297" height="29" valign="top" background="__ROOT__/Public/admin/images/content-bg.gif">
+    <table width="760" height="31" border="0" cellpadding="0" cellspacing="0" class="left_topbg" id="table2">
+      <tr>
+        <td height="31"><div class="titlebt">首&nbsp;&nbsp;页</div></td>
+      </tr>
+    </table></td>
+    <td width="22" valign="top" background="__ROOT__/Public/admin/images/mail_rightbg.gif"><img src="__ROOT__/Public/admin/images/nav-right-bg.gif" width="16" height="29" /></td>
+  </tr>
+  <tr>
+    <td height="71" valign="middle" background="__ROOT__/Public/admin/images/mail_leftbg.gif">&nbsp;</td>
+ 
+ 
+   <td valign="top" bgcolor="#F7F8F9"> 
+   <table width="100%">
+   <tr>
+   <td>   
+<div class="main">
+<!--左侧开始-->  
+<div class="column">
+<dl class="dbox">
+<dt>
+<table width="100%" style="font-weight:bold;" class="nowtable">
+<tr><td width="40%">&nbsp;&nbsp;最近文章&nbsp;&nbsp;</td>
+<td width="60%" align="right"><a href="__APP__/Article/index">更多</a></td>
+</tr>
+</table>
+</dt>
+<table class="dboxtable" >
+<tbody>
+<volist name="articles" id="art" >
+<tr class="dboxtr">
+<td class="nline" style="text-align:left" width="60%">
+<?php $title=msubstr($art['title'],0,17); ?>{$title}&nbsp;
+</td>
+<td class="nline" style="text-align:right" width="40%">
+{$art['lastpost']|date="Y-m-d H:i",###}&nbsp;</td>
+</tr>
+</volist>
+</tbody>
+</table>
+</dl>
+</div>
+<!--左侧结束--> 
+
+
+<div class="column"><!-- //右边的快捷消息开始 -->       
+<dl class="dbox">
+<dt>
+<table width="100%" style="font-weight:bold" class="nowtable"><tr><td width="40%">&nbsp;&nbsp;暂无&nbsp;&nbsp;</td><td width="60%" align="right"><a href="__APP__/Message/index">更多</a>&nbsp;&nbsp; </td></tr></table>
+</dt>    
+<table class="dboxtable" width="100%" style="word-break:break-all;word-wrap:break-word;table-layout:fixed;"> 
+<tbody>
+<volist name="message" id="mess" >
+<tr>
+<td class="nline" style="text-align:left" width="60%"><?php $title=msubstr($mess['title'],0,17); ?>{$title} &nbsp;</td>
+<td class="nline" style="text-align:right">{$mess['createtime']|date="Y-m-d H:i",###}&nbsp;</td>
+</tr>
+</volist>
+</tbody>
+</table>
+</dl>
+</div>
+
+
+</div>
+    
+    
+   
+<div class="main">
+    
+   
+<!--下左侧开始-->   
+<div id="column1" class="column ui-sortable ui-sortable-disabled ui-state-disabled" unselectable="on" style="-moz-user-select: none;" aria-disabled="true">
+<dl class="dbox" id="item6">
+            <dt class="lside"><div class="nowtable" style="color:000000">&nbsp;&nbsp;信息统计</div></dt>
+            <table width="100%" height="201" class="dboxtable">
+            <tbody>
+            <tr height='28' >
+            <td class="nline" style="text-align:left" width="50%"> 文章数： </td>
+            <td class="nline" style="text-align:left">{$articlenum} &nbsp; </td>
+            </tr>
+            <tr>
+                <td class="nline" style="text-align:left" width="50%"> 留言数： </td>
+                <td class="nline" style="text-align:left">{$messagenum} &nbsp; </td>
+            </tr>
+            <tr>
+      <td class="nline" style="text-align:left" width="50%"> 回复数： </td>
+      <td class="nline" style="text-align:left"><span class="nline" style="text-align:left">{$replynum} &nbsp;</span></td>
+    </tr>
+    <tr>
+        <td class="nline" style="text-align:left" width="50%"> 文章栏目数： </td>
+        <td class="nline" style="text-align:left"><span class="nline" style="text-align:left">{$categorynum} &nbsp;</span></td>
+    </tr>
+        <tr>
+          <td class="nline" style="text-align:left"> 用户数： </td>
+          <td class="nline" style="text-align:left"> {$usernum} &nbsp; </td>
+        </tr>
+    
+    <tr>
+        <td class="nline" style="text-align:left"> 上次登录时间： </td>
+        <td class="nline" style="text-align:left">
+        <!--{if !empty($admin['lastlogintime'])}-->
+        {$admin['last_login_time']|date='Y-m-d H:i:s',### } 
+        <!--{/if}-->
+        &nbsp; </td>
+    </tr>
+    
+    <tr>
+        <td height="24" style="text-align:left"> 上次登录IP： </td>
+        <td style="text-align:left"> {$admin['last_login_ip']} &nbsp; </td>
+    </tr>
+    </tbody></table>
+        </dl>
+</div>
+<!--下左侧结束--> 
+
+
+<div class="column ui-sortable ui-sortable-disabled ui-state-disabled" id="column2" unselectable="on" aria-disabled="true"><!-- //右边的快捷消息开始 -->       
+        <dl class="dbox" id="item6">
+            <dt class="lside"><div class="nowtable" style="color:000000">&nbsp;&nbsp;服务器信息</div></dt>
+            <table class="dboxtable" width="100%" height="201">
+				<tbody>
+				<tr>
+					<td class="nline" style="text-align:left" width="50%"> 操作系统： </td>
+					<td class="nline" style="text-align:left"> <?php echo PHP_OS ?> &nbsp; </td>
+				</tr>
+				<tr>
+					<td class="nline" style="text-align:left" width="50%"> PHP版本： </td>
+					<td class="nline" style="text-align:left"> <?php echo PHP_VERSION ?> &nbsp; </td>
+				</tr>
+				<tr>
+					<td class="nline" style="text-align:left"> MYSQL版本： </td>
+					<td class="nline" style="text-align:left"> <?php echo mysql_get_server_info() ?> &nbsp; </td>
+				</tr>
+					<tr>
+					<td class="nline" style="text-align:left"> 服务器软件： </td>
+					<td class="nline" style="text-align:left"> {$_SERVER['SERVER_SOFTWARE']} &nbsp; </td>
+				</tr>
+				<tr>
+					<td class="nline" style="text-align:left"> 服务器管理员邮箱： </td>
+					<td class="nline" style="text-align:left"> {$_SERVER['SERVER_ADMIN']} &nbsp; </td>
+				</tr>
+					<tr>
+					<td class="nline" style="text-align:left"> 允许上传最大文件大小： </td>
+					<td class="nline" style="text-align:left"> <?php echo ini_get('upload_max_filesize')?> &nbsp; </td>
+				</tr>
+					<tr>
+					<td style="text-align:left" height="24"> 数据库大小： </td>
+					<td style="text-align:left"> {$dbsize} &nbsp; </td>
+				</tr>
+				</tbody></table>
+		</dl>
+
+</div>
+
+
+</div>
+</td>
+</tr>
+</table>  
+    
+    
+    
+    </td>
+    <td background="__PUBLIC__/admin/images/mail_rightbg.gif">&nbsp;</td>
+  </tr>
+  <tr>
+    <td valign="middle" background="__PUBLIC__/admin/images/mail_leftbg.gif"><img src="__PUBLIC__/admin/images/buttom_left2.gif" width="17" height="17" /></td>
+      <td height="17" valign="top" background="__PUBLIC__/admin/images/buttom_bgs.gif"><img src="__PUBLIC__/admin/images/buttom_bgs.gif" width="17" height="17" /></td>
+    <td background="__PUBLIC__/admin/images/mail_rightbg.gif"><img src="__PUBLIC__/admin/images/buttom_right2.gif" width="16" height="17" /></td>
+  </tr>
+</table>
+</body>
+</html>
